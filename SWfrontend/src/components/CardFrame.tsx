@@ -3,7 +3,7 @@ import CardFrameProps from "../interfaces/cardFrameProps";
 import PlanetGenerator from "../logic/planetGenerator";
 import Card from "./card";
 import CardFrameState from "../interfaces/cardFrameState";
-
+import "../componentStyles/CardFrame.less";
 export default class CardFrame extends React.Component<CardFrameProps> {
     private planetGenerator: PlanetGenerator;
 
@@ -26,9 +26,12 @@ export default class CardFrame extends React.Component<CardFrameProps> {
     }
 
     public render() {
-        return <>{this.state.planets.map((planet) => {
-            console.error("planet:", planet);
-            return <Card title={planet.name}></Card>
-        })}</>
+        return <div className="cardFrame">{
+            this.state.planets.map((planet) => {
+                console.error("planet:", planet);
+                return <Card title={planet.name}>
+                </Card>
+            })}
+        </div>
     }
 }
