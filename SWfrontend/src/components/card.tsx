@@ -8,7 +8,8 @@ export default class Card extends React.Component<CardProps> {
     };
     public props: CardProps = {
         title: "",
-        className: ""
+        className: "",
+        key: ""
     };
     public title: string;
 
@@ -17,17 +18,19 @@ export default class Card extends React.Component<CardProps> {
         this.props = props;
     }
 
+    // First calls the onClick function passed in the props, than enlarges the card and displays the information of the planet.
     public onCardClick(): void {
+        this.props.onClick?.(this.props.title);
         this.setState({
             isSelected: !this.state.isSelected
         });
     }
 
     public render(): React.JSX.Element {
-        return <div className={"SWCard " + this.props.className} onClick={() => { this.onCardClick(); }}>
+        return <div className={"SWCard SWCard-hover" + " " + this.props.className} onClick={() => { this.onCardClick(); }}>
             <div className="title">{this.props.title}</div>
             <div className="SWCard-image-container">
-                <img className="SWCard-image" src={planetImages[this.props.title.toLowerCase()]} />
+                <img className="SWCard-image image-hover" src={planetImages[this.props.title.toLowerCase()]} />
             </div >
         </div >;
     }
