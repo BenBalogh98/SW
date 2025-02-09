@@ -29,8 +29,7 @@ export default class CardFrame extends React.Component<CardFrameProps> {
         return <div className="cardFrame">{
             this.state.planets.map((planet) => {
                 console.error("planet:", planet);
-                return <Card title={planet.name}>
-                </Card>
+                return <Card className={planet.name} title={planet.name}></Card>
             })}
         </div>
     }
