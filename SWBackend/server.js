@@ -1,3 +1,5 @@
+
+const planets = require("./planets");
 const express = require('express'); // Importing express
 const app = express(); // Creating an express app
 
@@ -13,5 +15,5 @@ app.listen(port, () => {
 });
 
 app.get("/planets", (req, res) => {
-    res.send("an array of planets with their data");
+    res.send(planets);
 })
