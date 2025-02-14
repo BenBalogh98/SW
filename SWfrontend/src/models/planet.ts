@@ -34,4 +34,21 @@ export default class Planet implements IPlanet {
         } = planetProperties);
     }
 
+    public getPlanetDetailsContent() {
+        return {
+            "Rotation Period:": this.rotation_period,
+            "Orbital Period:": this.orbital_period,
+            "Diameter:": this.diameter,
+            "Climate:": this.climate,
+            "Gravity:": this.gravity,
+            "Terrain:": this.terrain,
+            "Surface water:": this.surface_water,
+            "Population:": this.population,
+            "Residents:": this.residents,
+            "Films:": this.films,
+            "Created:": new Date(this.created),
+            "Edited:": new Date(this.edited)
+        }
+    }
+
 }

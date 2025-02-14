@@ -8,7 +8,27 @@
     box-shadow: 0px 0px 10px 10px rgb(11 177 169 / 50%);
     background-color:black;
     flex-direction: column;
-
+    .SWCard-leaveButton{
+        display: flex;
+        align-self: end;
+        img{
+            width: 75px;
+            height: 75px;
+            border-radius: 100%;
+        }
+        &.SWCard-leaveButton:hover{
+            cursor: pointer;
+        }
+    }
+    .SWCard-details-container{
+        color: rgb(255, 227, 0);
+        .SWCard-content-container{
+            display: flex;
+            .SWCard-value-container{
+                padding-left: 0.3em;
+            }
+        }
+    }
     .title{
         z-index: 1;
         display: flex;
@@ -25,10 +45,6 @@
         .SWCard-image{
             width: 400px;
             border-radius: 100%;
-            &.image-hover:hover{
-                transform: scale(1.05);
-                transition: all .3s ease-in;
-            }
         }
     }
     &.hidden{
@@ -37,6 +53,10 @@
     &.SWCard-hover:hover{
         transition: all .3s ease-in;
         box-shadow: 0px 0px 20px 20px rgb(11 177 169 / 50%);   
+        .SWCard-image{
+            transform: scale(1.05);
+            transition: all .3s ease-in;
+        }
    }
 }
 

@@ -21,6 +21,7 @@ export default class PlanetGenerator {
             });
             callBackonPlanetReceived(this.planets);
         });
+
         return this.planets;
     }
 }

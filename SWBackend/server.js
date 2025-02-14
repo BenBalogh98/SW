@@ -15,5 +15,6 @@ app.listen(port, () => {
 });
 
 app.get("/planets", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
     res.send(planets);
 })

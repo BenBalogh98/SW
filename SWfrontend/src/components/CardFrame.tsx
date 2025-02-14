@@ -26,9 +26,15 @@ export default class CardFrame extends React.Component<CardFrameProps> {
     }
 
     // Sets the selectedCard to the title of the clicked card. Only the selectedCard will be displayed.
-    private onCardClicked(cardToKeep: string): void {
+    private onCardSelect(cardToKeep: string): void {
         this.setState({
             selectedCard: cardToKeep
+        })
+    }
+
+    private onCardDeselect(cardToDeselect: string): void {
+        this.setState({
+            selectedCard: undefined
         })
     }
 
@@ -37,10 +43,14 @@ export default class CardFrame extends React.Component<CardFrameProps> {
             this.state.planets.map((planet) => {
                 return <Card
                     key={planet.name}
-                    onClick={(cardToKeep: string) => { this.onCardClicked(cardToKeep) }}
-                    // If the selectedCard has no value, add "". If it has value and the selectedCard===planet.name, add "hidden". Else add "" to the classList.
+                    onSelect={(cardToKeep: string) => { this.onCardSelect(cardToKeep) }}
                     className={planet.name + " " + (this.state.selectedCard ? this.state.selectedCard === planet.name ? "" : "hidden" : "")}
-                    title={planet.name}></Card>;
+                    content={planet.getPlanetDetailsContent()}
+                    title={planet.name}
+                    hasLeaveButton={true}
+                    leaveButtonIMGContent={"https://www.gunjap.net/site/wp-content/uploads/2015/11/DSC_0593_zps9o5lt023.jpgoriginal.jpg"}
+                    onDeselect={(cardToDeselect: string) => { this.onCardDeselect(cardToDeselect) }}>
+                </Card>;
             })}
         </div>
     }
