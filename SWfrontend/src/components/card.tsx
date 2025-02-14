@@ -1,7 +1,6 @@
 import React from "react";
 import CardProps from "../interfaces/cardProps";
 import "../componentStyles/card.less";
-import planetImages from "../consts/planetImages";
 export default class Card extends React.Component<CardProps> {
     // Should make an interface for the state
     public state = {
@@ -12,8 +11,10 @@ export default class Card extends React.Component<CardProps> {
         title: "",
         className: "",
         key: "",
-        content: {},
-        hasLeaveButton: false
+        content: [],
+        hasLeaveButton: false,
+        leaveButtonIMGContent: "",
+        backgroundImage: ""
     };
 
     public constructor(props: CardProps) {
@@ -47,13 +48,18 @@ export default class Card extends React.Component<CardProps> {
 
     private createDetailContent(): React.JSX.Element {
         return <div className={"SWCard-details-container"}>
-            {Object.keys(this.props.content).map((key) => {
-                let value = this.props.content[key];
-                if (value instanceof Date) {
-                    value = value.toUTCString();
-                }
-                return <div className={"SWCard-content-container"}><div>{key}</div><div className={"SWCard-value-container"}>{value}</div></div>;
-            })}</div>;
+            {
+                this.props.content.map((detail) => {
+                    let value = detail.value;
+                    if (value instanceof Date) {
+                        value = value.toUTCString();
+                    } else if (value instanceof Array) {
+                        value = value.join(", ");
+                    }
+                    return <div className={"SWCard-detail-container"}><div>{detail.displayName}</div><div>{value}</div></div>;
+                })
+            }
+        </div>;
     }
 
     private createLeaveButtonContent(): React.JSX.Element {
@@ -73,12 +79,13 @@ export default class Card extends React.Component<CardProps> {
     }
 
     public render(): React.JSX.Element {
+
         return <div className={this.getSWCcardClassName()} onClick={() => { this.selectCard(); }}>
             <div className="title">{this.props.title}</div>
             {this.state.isLeaveButtonVisible ? this.createLeaveButton() : ""}
             {this.state.isSelected ? <div>{this.createDetailContent()}</div> : ""}
             <div className="SWCard-image-container">
-                <img className="SWCard-image" src={planetImages[this.props.title.toLowerCase()]} />
+                <img className="SWCard-image" src={this.props.backgroundImage} />
             </div >
         </div >;
     }

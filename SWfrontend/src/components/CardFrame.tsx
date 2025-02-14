@@ -1,28 +1,22 @@
 import React from "react";
 import CardFrameProps from "../interfaces/cardFrameProps";
-import PlanetGenerator from "../logic/planetGenerator";
 import Card from "./card";
 import CardFrameState from "../interfaces/cardFrameState";
 import "../componentStyles/CardFrame.less";
 export default class CardFrame extends React.Component<CardFrameProps> {
-    private planetGenerator: PlanetGenerator;
+    //private planetGenerator: PlanetGenerator;
 
     public state: CardFrameState = {
-        planets: []
+        selectedCard: undefined
+    };
+
+    public props: CardFrameProps = {
+        items: []
     };
 
     constructor(props: CardFrameProps) {
         super(props);
-        this.planetGenerator = props.planetGenerator;
-
-    }
-
-    componentDidMount(): void {
-        this.planetGenerator.createPlanets((planets) => {
-            this.setState({
-                planets: planets
-            })
-        });
+        console.error(props, "CardFrame constructor");
     }
 
     // Sets the selectedCard to the title of the clicked card. Only the selectedCard will be displayed.
@@ -40,16 +34,17 @@ export default class CardFrame extends React.Component<CardFrameProps> {
 
     public render() {
         return <div className="cardFrame">{
-            this.state.planets.map((planet) => {
+            this.props.items.map((item) => {
                 return <Card
-                    key={planet.name}
+                    key={item.name}
                     onSelect={(cardToKeep: string) => { this.onCardSelect(cardToKeep) }}
-                    className={planet.name + " " + (this.state.selectedCard ? this.state.selectedCard === planet.name ? "" : "hidden" : "")}
-                    content={planet.getPlanetDetailsContent()}
-                    title={planet.name}
+                    className={item.name + " " + (this.state.selectedCard ? this.state.selectedCard === item.name ? "" : "hidden" : "")}
+                    content={item.getPlanetDetailsContent()}
+                    title={item.name}
                     hasLeaveButton={true}
-                    leaveButtonIMGContent={"https://www.gunjap.net/site/wp-content/uploads/2015/11/DSC_0593_zps9o5lt023.jpgoriginal.jpg"}
-                    onDeselect={(cardToDeselect: string) => { this.onCardDeselect(cardToDeselect) }}>
+                    leaveButtonIMGContent={item.exitButtonIMG}
+                    onDeselect={(cardToDeselect: string) => { this.onCardDeselect(cardToDeselect) }}
+                    backgroundImage={item.backgroundImage}>
                 </Card>;
             })}
         </div>

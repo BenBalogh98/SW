@@ -1,7 +1,11 @@
 import './App.css'
 import React from "react";
 import CardFrame from './components/CardFrame.tsx';
-import PlanetGenerator from './logic/planetGenerator.ts';
+
+import AppState from './interfaces/appState.ts';
+import SwapiRequests from './ajaxControls/swapiRequests.ts';
+import Planet from './interfaces/planet.ts';
+import Item from './interfaces/item.ts';
 
 export default class App extends React.Component {
 
@@ -9,10 +13,26 @@ export default class App extends React.Component {
     super(props);
   }
 
+  public state: AppState = {
+    planets: []
+  };
+
+  componentDidMount(): void {
+    const swapi = new SwapiRequests();
+    swapi.getSWPlanets().then((planets) => {
+      const items: Item[] = [];
+      planets.results.forEach((planet) => {
+        items.push(new Planet(planet));
+      });
+      this.setState({
+        planets: items
+      });
+    });
+  }
   render() {
 
     return <>
-      <CardFrame planetGenerator={new PlanetGenerator()}></CardFrame>
+      {this.state.planets.length ? <CardFrame items={this.state.planets}></CardFrame> : <div>Loading...</div>}
     </>
   }
 }

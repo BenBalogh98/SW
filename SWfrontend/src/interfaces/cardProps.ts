@@ -1,5 +1,4 @@
-import { ReactElement } from "react";
-import Card from "../components/card";
+import { DetailsContent } from "./item";
 
 export default interface CardProps {
     title: string;
@@ -7,7 +6,8 @@ export default interface CardProps {
     onSelect?: (planetToSelect: string) => void,
     onDeselect?: (planetToDeselect: string) => void,
     key: string,
-    content: Object,
+    content: DetailsContent[],
     hasLeaveButton?: boolean,
-    leaveButtonIMGContent?: string
+    leaveButtonIMGContent?: string,
+    backgroundImage: string
 }
