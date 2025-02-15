@@ -1,6 +1,6 @@
 import planetImages from "../consts/planetImages";
-import { IPlanet } from "./SWApiResponse";
-import Item, { DetailsContent } from "./item";
+import { IPlanet } from "../interfaces/SWApiResponse";
+import Item, { DetailsContent } from "../interfaces/item";
 
 export default class Planet implements Item {
     public name: string;
@@ -38,7 +38,7 @@ export default class Planet implements Item {
         } = planetProperties);
 
         this.exitButtonIMG = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon_Red_X.svg/1024px-Icon_Red_X.svg.png";
-        this.backgroundImage = planetImages[this.name.toLowerCase()];
+        this.backgroundImage = planetImages[this.name.toLowerCase() as keyof typeof planetImages];
     }
 
     public getPlanetDetailsContent(): DetailsContent[] {

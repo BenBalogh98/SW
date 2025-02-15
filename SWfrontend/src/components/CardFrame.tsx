@@ -4,7 +4,6 @@ import Card from "./card";
 import CardFrameState from "../interfaces/cardFrameState";
 import "../componentStyles/CardFrame.less";
 export default class CardFrame extends React.Component<CardFrameProps> {
-    //private planetGenerator: PlanetGenerator;
 
     public state: CardFrameState = {
         selectedCard: undefined

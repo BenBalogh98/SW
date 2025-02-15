@@ -4,14 +4,10 @@ import CardFrame from './components/CardFrame.tsx';
 
 import AppState from './interfaces/appState.ts';
 import SwapiRequests from './ajaxControls/swapiRequests.ts';
-import Planet from './interfaces/planet.ts';
+import Planet from './items/planet.ts';
 import Item from './interfaces/item.ts';
 
 export default class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   public state: AppState = {
     planets: []
@@ -30,7 +26,6 @@ export default class App extends React.Component {
     });
   }
   render() {
-
     return <>
       {this.state.planets.length ? <CardFrame items={this.state.planets}></CardFrame> : <div>Loading...</div>}
     </>
