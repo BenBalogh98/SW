@@ -6,8 +6,8 @@ export default class SwapiRequests extends BaseRequest {
         super(BASEURL);
     }
 
-    public getSWPeople() {
-
+    public async getSWPeople() {
+        return await super.requestData<IPlanet[]>(PLANETS);
     }
 
     public async getSWPlanets(): Promise<IPlanets> {

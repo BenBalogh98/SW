@@ -15,7 +15,6 @@ export default class CardFrame extends React.Component<CardFrameProps> {
 
     constructor(props: CardFrameProps) {
         super(props);
-        console.error(props, "CardFrame constructor");
     }
 
     // Sets the selectedCard to the title of the clicked card. Only the selectedCard will be displayed.
@@ -25,7 +24,7 @@ export default class CardFrame extends React.Component<CardFrameProps> {
         })
     }
 
-    private onCardDeselect(cardToDeselect: string): void {
+    private onCardDeselect(): void {
         this.setState({
             selectedCard: undefined
         })
@@ -42,7 +41,7 @@ export default class CardFrame extends React.Component<CardFrameProps> {
                     title={item.name}
                     hasLeaveButton={true}
                     leaveButtonIMGContent={item.exitButtonIMG}
-                    onDeselect={(cardToDeselect: string) => { this.onCardDeselect(cardToDeselect) }}
+                    onDeselect={() => { this.onCardDeselect() }}
                     backgroundImage={item.backgroundImage}>
                 </Card>;
             })}

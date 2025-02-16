@@ -1,9 +1,9 @@
 import React from "react";
 import CardProps from "../interfaces/cardProps";
+import CardState from "../interfaces/cardState";
 import "../componentStyles/card.less";
 export default class Card extends React.Component<CardProps> {
-    // Should make an interface for the state
-    public state = {
+    public state: CardState = {
         isSelected: false,
         isLeaveButtonVisible: false
     };
@@ -22,7 +22,7 @@ export default class Card extends React.Component<CardProps> {
         this.props = props;
     }
 
-    // First calls the onSelect function passed in the props, than enlarges the card and displays the information of the planet.
+    // First calls the onSelect function passed in the props, than enlarges the card and displays the information of the planet by changing the state.
     private selectCard(): void {
         if (this.state.isSelected) {
             return;
@@ -34,12 +34,12 @@ export default class Card extends React.Component<CardProps> {
         });
     }
 
-    // First calls the onDeselect function passed in the props, than shrinks the card and hides the information of the planet.
+    // First calls the onDeselect function passed in the props, than shrinks the card and hides the information of the planet by changing the state.
     private deselectCard(): void {
         if (!this.state.isSelected) {
             return;
         }
-        this.props.onDeselect?.(this.props.title);
+        this.props.onDeselect?.();
         this.setState({
             isSelected: false,
             isLeaveButtonVisible: false

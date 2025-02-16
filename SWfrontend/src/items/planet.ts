@@ -1,7 +1,7 @@
 import planetImages from "../consts/planetImages";
 import { IPlanet } from "../interfaces/SWApiResponse";
 import Item, { DetailsContent } from "../interfaces/item";
-
+import { leaveButtonImage } from "../consts/leaveButtonImage";
 export default class Planet implements Item {
     public name: string;
     public rotation_period: string;
@@ -17,8 +17,9 @@ export default class Planet implements Item {
     public created: Date;
     public edited: Date;
     public url: string;
-    public exitButtonIMG: string;
-    public backgroundImage: string
+    public exitButtonIMG: string = leaveButtonImage;
+    public backgroundImage: string;
+
     constructor(planetProperties: IPlanet) {
         ({
             name: this.name,
@@ -37,7 +38,6 @@ export default class Planet implements Item {
             url: this.url
         } = planetProperties);
 
-        this.exitButtonIMG = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon_Red_X.svg/1024px-Icon_Red_X.svg.png";
         this.backgroundImage = planetImages[this.name.toLowerCase() as keyof typeof planetImages];
     }
 
