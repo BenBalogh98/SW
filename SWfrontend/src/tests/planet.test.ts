@@ -46,7 +46,7 @@ describe("Planet.getPlanetDetailsContent", () => {
         };
 
         const planet = new Planet(planetData);
-        const detailsContent = planet.getPlanetDetailsContent();
+        const detailsContent = planet.getDetailsContent();
         expect(detailsContent.length).toBe(11);
     });
 });
@@ -71,7 +71,7 @@ describe("Planet.getPlanetDetailsContent", () => {
         };
 
         const planet = new Planet(planetData);
-        const detailsContent = planet.getPlanetDetailsContent();
+        const detailsContent = planet.getDetailsContent();
         detailsContent.forEach((detail) => {
             expect(detail).toHaveProperty("displayName");
             expect(detail).toHaveProperty("value");

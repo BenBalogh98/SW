@@ -1,5 +1,7 @@
 
 const planets = require("./planets");
+const people = require("./people");
+const films = require("./films");
 const express = require('express'); // Importing express
 const app = express(); // Creating an express app
 
@@ -17,4 +19,14 @@ app.listen(port, () => {
 app.get("/planets", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
     res.send(planets);
-})
+});
+
+app.get("/people", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
+    res.send(people);
+});
+
+app.get("/films", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
+    res.send(films);
+});

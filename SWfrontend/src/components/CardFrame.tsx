@@ -2,7 +2,7 @@ import React from "react";
 import CardFrameProps from "../interfaces/cardFrameProps";
 import Card from "./card";
 import CardFrameState from "../interfaces/cardFrameState";
-import "../componentStyles/CardFrame.less";
+import "../styles/componentStyles/CardFrame.less";
 export default class CardFrame extends React.Component<CardFrameProps> {
 
     public state: CardFrameState = {
@@ -15,19 +15,20 @@ export default class CardFrame extends React.Component<CardFrameProps> {
 
     constructor(props: CardFrameProps) {
         super(props);
+        this.props = props;
     }
 
     // Sets the selectedCard to the title of the clicked card. Only the selectedCard will be displayed.
     private onCardSelect(cardToKeep: string): void {
         this.setState({
             selectedCard: cardToKeep
-        })
+        });
     }
 
     private onCardDeselect(): void {
         this.setState({
             selectedCard: undefined
-        })
+        });
     }
 
     public render() {
@@ -37,7 +38,7 @@ export default class CardFrame extends React.Component<CardFrameProps> {
                     key={item.name}
                     onSelect={(cardToKeep: string) => { this.onCardSelect(cardToKeep) }}
                     className={item.name + " " + (this.state.selectedCard ? this.state.selectedCard === item.name ? "" : "hidden" : "")}
-                    content={item.getPlanetDetailsContent()}
+                    content={item.getDetailsContent()}
                     title={item.name}
                     hasLeaveButton={true}
                     leaveButtonIMGContent={item.exitButtonIMG}
@@ -45,6 +46,6 @@ export default class CardFrame extends React.Component<CardFrameProps> {
                     backgroundImage={item.backgroundImage}>
                 </Card>;
             })}
-        </div>
+        </div>;
     }
 }

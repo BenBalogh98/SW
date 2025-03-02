@@ -2,6 +2,7 @@ import planetImages from "../consts/planetImages";
 import { IPlanet } from "../interfaces/SWApiResponse";
 import Item, { DetailsContent } from "../interfaces/item";
 import { leaveButtonImage } from "../consts/leaveButtonImage";
+
 export default class Planet implements Item {
     public name: string;
     public rotation_period: string;
@@ -12,8 +13,10 @@ export default class Planet implements Item {
     public terrain: string;
     public surface_water: string;
     public population: string;
-    public residents: string[];
-    public films: string[];
+    public residentsURLs: string[];
+    public resident: Item[] = [];
+    public filmsURLs: string[];
+    public films: Item[] = [];
     public created: Date;
     public edited: Date;
     public url: string;
@@ -31,8 +34,8 @@ export default class Planet implements Item {
             terrain: this.terrain,
             surface_water: this.surface_water,
             population: this.population,
-            residents: this.residents,
-            films: this.films,
+            residents: this.residentsURLs,
+            films: this.filmsURLs,
             created: this.created,
             edited: this.edited,
             url: this.url
@@ -41,7 +44,7 @@ export default class Planet implements Item {
         this.backgroundImage = planetImages[this.name.toLowerCase() as keyof typeof planetImages];
     }
 
-    public getPlanetDetailsContent(): DetailsContent[] {
+    public getDetailsContent(): DetailsContent[] {
         return [
             { displayName: "Rotation Period:", value: this.rotation_period },
             { displayName: "Orbital Period:", value: this.orbital_period },
@@ -51,11 +54,25 @@ export default class Planet implements Item {
             { displayName: "Terrain:", value: this.terrain },
             { displayName: "Surface water:", value: this.surface_water },
             { displayName: "Population:", value: this.population },
-            { displayName: "Residents:", value: this.residents },
-            { displayName: "Films:", value: this.films },
+            { displayName: "Residents:", value: this.residentNames },
+            { displayName: "Films:", value: this.filmNames },
             { displayName: "Created:", value: new Date(this.created) },
             { displayName: "Edited:", value: new Date(this.edited) }
         ]
+    }
+
+    private get residentNames(): string[] {
+        if (!this.resident.length) {
+            return this.residentsURLs;
+        }
+        return this.resident.map((resident) => { return resident.name; })
+    }
+
+    private get filmNames(): string[] {
+        if (!this.films.length) {
+            return this.filmsURLs;
+        }
+        return this.films.map((film) => { return film.name; });
     }
 
 }

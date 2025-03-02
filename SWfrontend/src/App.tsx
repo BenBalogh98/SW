@@ -6,28 +6,30 @@ import AppState from './interfaces/appState.ts';
 import SwapiRequests from './ajaxControls/swapiRequests.ts';
 import Planet from './items/planet.ts';
 import Item from './interfaces/item.ts';
+import Logic from './logic.ts';
 
 export default class App extends React.Component {
 
   public state: AppState = {
-    planets: []
+    planets: [],
+    films: [],
+    residents: []
   };
 
   componentDidMount(): void {
-    const swapi = new SwapiRequests();
-    swapi.getSWPlanets().then((planets) => {
-      const items: Item[] = [];
-      planets.results.forEach((planet) => {
-        items.push(new Planet(planet));
-      });
+    new Logic().loadAllData().then((items) => {
       this.setState({
-        planets: items
+        planets: items.planets,
+        films: items.films,
+        residents: items.people
       });
     });
   }
+
   render() {
+    const response = this.state.planets.length ? <CardFrame items={this.state.planets}></CardFrame> : <div>Loading...</div>;
     return <>
-      {this.state.planets.length ? <CardFrame items={this.state.planets}></CardFrame> : <div>Loading...</div>}
+      {response}
     </>
   }
 }

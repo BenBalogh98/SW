@@ -1,7 +1,7 @@
 import React from "react";
 import CardProps from "../interfaces/cardProps";
 import CardState from "../interfaces/cardState";
-import "../componentStyles/card.less";
+import "../styles/componentStyles/card.less";
 export default class Card extends React.Component<CardProps> {
     public state: CardState = {
         isSelected: false,
