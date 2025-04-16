@@ -1,4 +1,6 @@
-export interface IPlanet {
+import Item from "./item";
+
+export interface IPlanet extends Item {
     name: string;
     rotation_period: string;
     orbital_period: string;
@@ -19,31 +21,31 @@ export interface IPlanets {
     results: IPlanet[];
 }
 
-export interface IPeople {
-    name: string
-    height: string
-    mass: string
-    hair_color: string
-    skin_color: string
-    eye_color: string
-    birth_year: string
-    gender: string
-    homeworld: string
-    films: string[]
-    species: any[]
-    vehicles: any[]
-    starships: string[]
-    created: string
-    edited: string
-    url: string
+export interface IPeople extends Item {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    birth_year: string;
+    gender: string;
+    homeworld: string;
+    films: string[];
+    species: any[];
+    vehicles: any[];
+    starships: string[];
+    created: string;
+    edited: string;
+    url: string;
 }
 
 export interface IPeoples {
-    count: number
-    results: IPeople[]
+    count: number;
+    results: IPeople[];
 }
 
-export interface IFilm {
+export interface IFilm extends Item {
     title: string
     episode_id: number
     opening_crawl: string

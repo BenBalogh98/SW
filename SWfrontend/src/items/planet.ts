@@ -3,7 +3,7 @@ import { IPlanet } from "../interfaces/SWApiResponse";
 import Item, { DetailsContent } from "../interfaces/item";
 import { leaveButtonImage } from "../consts/leaveButtonImage";
 
-export default class Planet implements Item {
+export default class Planet extends Item {
     public name: string;
     public rotation_period: string;
     public orbital_period: string;
@@ -24,6 +24,8 @@ export default class Planet implements Item {
     public backgroundImage: string;
 
     constructor(planetProperties: IPlanet) {
+        super(planetProperties);
+
         ({
             name: this.name,
             rotation_period: this.rotation_period,
