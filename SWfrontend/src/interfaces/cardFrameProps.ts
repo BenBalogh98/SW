@@ -1,5 +1,5 @@
-import PlanetGenerator from "../logic/planetGenerator";
+import Item from "./item";
 
 export default interface CardFrameProps {
-    planetGenerator: PlanetGenerator;
+    items: Item[];
 }
