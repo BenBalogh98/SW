@@ -2,7 +2,7 @@ import React from "react";
 import CardFrameProps from "../interfaces/cardFrameProps";
 import Card from "./card";
 import CardFrameState from "../interfaces/cardFrameState";
-import "../styles/componentStyles/CardFrame.less";
+import "../styles/componentStyles/cardFrame.less";
 export default class CardFrame extends React.Component<CardFrameProps> {
 
     public state: CardFrameState = {
