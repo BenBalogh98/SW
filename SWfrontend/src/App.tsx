@@ -3,9 +3,6 @@ import React from "react";
 import CardFrame from './components/CardFrame.tsx';
 
 import AppState from './interfaces/appState.ts';
-import SwapiRequests from './ajaxControls/swapiRequests.ts';
-import Planet from './items/planet.ts';
-import Item from './interfaces/item.ts';
 import Logic from './logic.ts';
 
 export default class App extends React.Component {
