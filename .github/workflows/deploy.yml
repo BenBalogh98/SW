@@ -45,9 +45,11 @@ jobs:
         with:
           name: production-files
           path: ./SWfrontend/dist
-
+      - name: List files for debugging
+        run: ls -lah ./SWfrontend/dist
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./production-files
+          publish_dir: ./SWfrontend/dist
