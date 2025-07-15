@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.send('<h1>Hello, Express.js Server!</h1>');
 });
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    "https://benbalogh98.github.io"
+];
 // Set up the server to listen on port 3000
 const port = 3000;
 app.listen(port, () => {
@@ -17,16 +22,19 @@ app.listen(port, () => {
 });
 
 app.get("/planets", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
+    const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
+    res.setHeader("Access-Control-Allow-Origin", origin);
     res.send(planets);
 });
 
 app.get("/people", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
+    const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
+    res.setHeader("Access-Control-Allow-Origin", origin);
     res.send(people);
 });
 
 app.get("/films", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
+    const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
+    res.setHeader("Access-Control-Allow-Origin", origin);
     res.send(films);
 });
