@@ -6,6 +6,7 @@ const express = require('express'); // Importing express
 const fs = require('node:fs');
 const app = express(); // Creating an express app
 const sql = require('mssql');
+const SQLProfiler = require('./sqlProfiler'); // Importing the SQLProfiler class
 
 const headers = [
     "ContIndex",
@@ -37,16 +38,15 @@ const headers = [
     "WIPDate"
 ];
 
-const config = {
-    user: 'tbs_v2_admin',
-    password: 'admin',
-    server: 'logsearch.net 49679', // e.g. 'localhost' or '192.168.1.10'
-    database: 'time_and_billing_system_v2',
-    options: {
-        encrypt: true, // Use true for Azure or SSL connections
-        trustServerCertificate: true // For local development
-    }
-};
+app.get("/sql", async (req, res) => {
+    const sqlProfiler = new SQLProfiler(headers);
+    const resp = await sqlProfiler.walkHeaders();
+    const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader('Content-Disposition', 'attachment; filename="example.txt"');
+    res.setHeader('Content-Type', 'text/plain');
+    res.send(resp);
+});
 
 app.get("/table", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173")
