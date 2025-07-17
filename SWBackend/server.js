@@ -5,10 +5,24 @@ const films = require("./films");
 const express = require('express'); // Importing express
 const fs = require('node:fs');
 const SQLProfiler = require('./sqlProfiler'); // Importing the SQLProfiler class
+const bodyParser = require('body-parser'); // Importing body-parser to parse JSON bodies
+const cors = require('cors'); // Importing CORS for handling cross-origin requests
 
+const app = express();
+app.use(cors()); // Use CORS to allow cross-origin requests
+app.use(express.json());
 
-const app = express(); // Creating an express app
-app.use(express.json()); // Middleware to parse JSON bodies
+// Set up the server to listen on port 3000
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    "https://benbalogh98.github.io"
+];
 
 const headers = [
     "ContIndex",
@@ -41,13 +55,17 @@ const headers = [
 ];
 
 app.post("/sql", async (req, res) => {
+    debugger;
+    res.setHeader("Access-Control-Allow-Origin", "https://benbalogh98.github.io");
+    //res.setHeader("Access-Control-Allow-Origin", allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "");
+    //res.setHeader('Content-Disposition', 'attachment; filename="example.txt"');
+    //es.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Content-Type', 'text/plain');
     const { header } = req.body;
     const sqlProfiler = new SQLProfiler(header);
     const resp = await sqlProfiler.walkHeaders();
-    const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.setHeader('Content-Disposition', 'attachment; filename="example.txt"');
-    res.setHeader('Content-Type', 'text/plain');
+    //const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
+
     res.send(resp);
 });
 
@@ -78,16 +96,8 @@ app.get('/', (req, res) => {
     res.send('<h1>Hello, Express.js Server!</h1>');
 });
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "https://benbalogh98.github.io"
-];
-// Set up the server to listen on port 3000
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+
+
 
 app.get("/planets", (req, res) => {
     const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";

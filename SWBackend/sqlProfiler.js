@@ -82,20 +82,18 @@ class SQLProfiler {
 
     async walkHeaders() {
         //debugger;
-        let response = "\t";
-        for (let i = 0; i < this.headers.length; i++) {
-            response += this.headers[i] + "\t";
-        }
-        response += "\n";
+        //let response = "\t";
+        let response = "";
+        //for (let i = 0; i < this.headers.length; i++) {
+        //    response += this.headers[i] + "\t";
+        //}
+        //response += "\n";
         for (let i = 0; i < this.headers.length; i++) {
             const header1 = this.headers[i];
-            response += header1 + "\t";
-            for (let j = i + 1; j < this.headers.length; j++) {
-                const header2 = this.headers[j];
-                const relationshipType = await this.getRelationshipType(header1, header2);
-                response += `${relationshipType}\t`;
-            }
-            response += "\n";
+            //response += header1 + "\t";
+
+            const relationshipType = await this.getRelationshipType(header1, this.testHeader);
+            response += `${relationshipType}\t`;
         }
         return response;
     }
