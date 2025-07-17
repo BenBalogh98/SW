@@ -4,9 +4,11 @@ const people = require("./people");
 const films = require("./films");
 const express = require('express'); // Importing express
 const fs = require('node:fs');
-const app = express(); // Creating an express app
-const sql = require('mssql');
 const SQLProfiler = require('./sqlProfiler'); // Importing the SQLProfiler class
+
+
+const app = express(); // Creating an express app
+app.use(express.json()); // Middleware to parse JSON bodies
 
 const headers = [
     "ContIndex",
@@ -18,28 +20,29 @@ const headers = [
     "ServicePartnerName",
     "Office",
     "Department",
-    // "Staff",
-    // "Level",
-    // "SubDepartment",
-    // "Entity",
-    // "Industry",
-    // "ClientMarket",
-    // "Job",
-    // "Task",
-    // "ZIP",
-    // "ClientGroup",
-    // "Admin",
-    // "NonBill",
-    // "Billable",
-    // "TotalHours",
-    // "BillableAmount",
-    // "Cost",
-    // "Margin",
-    // "WIPDate"
+    "Staff",
+    "Level",
+    "SubDepartment",
+    "Entity",
+    "Industry",
+    "ClientMarket",
+    "Job",
+    "Task",
+    "ZIP",
+    "ClientGroup",
+    "Admin",
+    "NonBill",
+    "Billable",
+    "TotalHours",
+    "BillableAmount",
+    "Cost",
+    "Margin",
+    "WIPDate"
 ];
 
-app.get("/sql", async (req, res) => {
-    const sqlProfiler = new SQLProfiler(headers);
+app.post("/sql", async (req, res) => {
+    const { header } = req.body;
+    const sqlProfiler = new SQLProfiler(header);
     const resp = await sqlProfiler.walkHeaders();
     const origin = allowedOrigins.includes(req.header('origin').toLowerCase()) ? req.headers.origin : "";
     res.setHeader("Access-Control-Allow-Origin", origin);

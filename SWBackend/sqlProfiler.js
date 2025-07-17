@@ -23,14 +23,43 @@ const poolPromise = new sql.ConnectionPool(config)
 
 
 class SQLProfiler {
-    constructor(headers) {
-        this.headers = headers;
+    constructor(header) {
+        this.testHeader = header;
+        this.headers = [
+            "ContIndex",
+            "ClientCode",
+            "ClientName",
+            "Client",
+            "Service",
+            "ClientPartnerName",
+            "ServicePartnerName",
+            "Office",
+            "Department",
+            "Staff",
+            "Level",
+            "SubDepartment",
+            "Entity",
+            "Industry",
+            "ClientMarket",
+            "Job",
+            "Task",
+            "ZIP",
+            "ClientGroup",
+            "Admin",
+            "NonBill",
+            "Billable",
+            "TotalHours",
+            "BillableAmount",
+            "Cost",
+            "Margin",
+            "WIPDate"
+        ];
     }
 
 
 
     async getRelationshipType(header1, header2) {
-        debugger;
+        //debugger;
         const pool1 = await poolPromise;
         const result1 = await pool1.request()
             .query(`SELECT ${header1}, COUNT(DISTINCT ${header2}) AS distinct_b_values FROM [time_and_billing_system_v2].[dbo].[MarginReport] GROUP BY ${header1} HAVING COUNT(DISTINCT ${header2}) > 1`);
@@ -52,7 +81,7 @@ class SQLProfiler {
     }
 
     async walkHeaders() {
-        debugger;
+        //debugger;
         let response = "\t";
         for (let i = 0; i < this.headers.length; i++) {
             response += this.headers[i] + "\t";
