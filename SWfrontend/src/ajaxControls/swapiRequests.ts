@@ -1,9 +1,10 @@
 import BaseRequest from "./baseRequest";
 import { BASEURL, FILMS, PEOPLE, PLANETS } from "../consts/swapiConsts";
 import { IFilms, IPeoples, IPlanets } from "../interfaces/SWApiResponse";
+
 export default class SwapiRequests extends BaseRequest {
     constructor() {
-        super(BASEURL);
+        super((import.meta as any).env.VITE_BASEURL);
     }
 
     public async getSWPeople(): Promise<IPeoples> {

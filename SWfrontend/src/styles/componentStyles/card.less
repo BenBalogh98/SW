@@ -8,6 +8,7 @@
     box-shadow: 0px 0px 10px 10px rgb(11 177 169 / 50%);
     background-color:black;
     flex-direction: column;
+
     .SWCard-leaveButton{
         display: flex;
         align-self: end;
@@ -18,8 +19,11 @@
         }
         &.SWCard-leaveButton:hover{
             cursor: pointer;
+            transition: all .3s ease-in;
+            transform: scale(1.05);
         }
     }
+
     .SWCard-details-container{
         color: rgb(255, 227, 0);
         display: flex;
