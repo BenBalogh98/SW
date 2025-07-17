@@ -24,7 +24,7 @@ jobs:
           working-directory: SWfrontend
           
       - name: Build project
-        run: npx vite --mode pipe
+        run: npx vite build --mode pipe
         working-directory: SWfrontend
 
       - name: Upload production-ready build files
