@@ -41,26 +41,30 @@ class SQLProfiler {
         const rowCount2 = result2.recordset.toTable().rows;
 
         if (rowCount1.length > 0 && rowCount2.length > 0) {
-            return "Many to Many";
+            return "X";
         } else if (rowCount1.length > 0) {
-            return "One to Many";
+            return "←";
         } else if (rowCount2.length > 0) {
-            return "Many to One";
+            return "↑";
         } else {
-            return "No Relationship";
+            return "O";
         }
     }
 
     async walkHeaders() {
         debugger;
-        let response = "";
+        let response = "\t";
+        for (let i = 0; i < this.headers.length; i++) {
+            response += this.headers[i] + "\t";
+        }
+        response += "\n";
         for (let i = 0; i < this.headers.length; i++) {
             const header1 = this.headers[i];
             response += header1 + "\t";
             for (let j = i + 1; j < this.headers.length; j++) {
                 const header2 = this.headers[j];
                 const relationshipType = await this.getRelationshipType(header1, header2);
-                response += `${header2}: ${relationshipType.length}\t`;
+                response += `${relationshipType}\t`;
             }
             response += "\n";
         }
