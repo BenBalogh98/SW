@@ -21,7 +21,7 @@ const RoutableCard: React.FC<RoutableCardProps> = ({
 
     const handleCardSelect = (cardTitle: string) => {
         const encodedTitle = encodeURIComponent(cardTitle);
-        navigate(`/${itemType}/${encodedTitle}`);
+        navigate(`/SW/${itemType}/${encodedTitle}`);
     };
 
     return (
