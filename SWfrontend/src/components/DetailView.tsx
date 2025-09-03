@@ -1,9 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Card from './card';
+import Item from '../interfaces/item';
 
 interface DetailViewProps {
-    items: any[]; // Replace with your specific item type
+    items: Item[];
 }
 
 const DetailView: React.FC<DetailViewProps> = ({ items }) => {
@@ -16,7 +17,7 @@ const DetailView: React.FC<DetailViewProps> = ({ items }) => {
     const handleBackClick = () => {
         navigate(-1); // Go back to previous page
     };
-
+    debugger;
     return (
         <div style={{
             padding: '20px',

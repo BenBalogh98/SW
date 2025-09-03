@@ -23,9 +23,13 @@ const RoutableCard: React.FC<RoutableCardProps> = ({
         const encodedTitle = encodeURIComponent(cardTitle);
         navigate(`/SW/${itemType}/${encodedTitle}`);
     };
+    // Clicking the card navigates, BUT since the card
+    //  is recreated, its selected state is lost.
+    // To fix this, the selected state needs to be managed here.
 
     return (
         <Card
+
             title={title}
             className={className}
             content={content}

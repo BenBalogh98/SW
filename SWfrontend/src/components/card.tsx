@@ -27,10 +27,15 @@ export default class Card extends React.Component<CardProps> {
         if (this.state.isSelected) {
             return;
         }
+        // Clicking the card navigates, BUT since the card
+        //  is recreated, its selected state is lost.
+        // To fix this, the selected state needs to be managed here.
         this.props.onSelect?.(this.props.title);
         this.setState({
             isSelected: true,
             isLeaveButtonVisible: true
+        }, () => {
+
         });
     }
 
@@ -39,15 +44,20 @@ export default class Card extends React.Component<CardProps> {
         if (!this.state.isSelected) {
             return;
         }
+        // Clicking the card navigates, BUT since the card
+        //  is recreated, its selected state is lost.
+        // To fix this, the selected state needs to be managed here.
         this.props.onDeselect?.();
         this.setState({
             isSelected: false,
             isLeaveButtonVisible: false
+        }, () => {
+
         });
     }
 
     private createDetailContent(): React.JSX.Element {
-        return <div className={"SWCard-details-container"}>
+        return <div key={this.props.title} className={"SWCard-details-container"}>
             {
                 this.props.content.map((detail) => {
                     let value = detail.value;
@@ -80,10 +90,13 @@ export default class Card extends React.Component<CardProps> {
 
     public render(): React.JSX.Element {
 
-        return <div className={this.getSWCcardClassName()} onClick={() => { this.selectCard(); }}>
+        return <div
+            className={this.getSWCcardClassName()}
+            onClick={() => { this.selectCard(); }}>
+
             <div className="title">{this.props.title}</div>
             {this.state.isLeaveButtonVisible ? this.createLeaveButton() : ""}
-            {this.state.isSelected ? <div>{this.createDetailContent()}</div> : ""}
+            <div>{this.state.isSelected ? this.createDetailContent() : ""}</div>
             <div className="SWCard-image-container">
                 <img className="SWCard-image" src={this.props.backgroundImage} />
             </div >
