@@ -1,8 +1,7 @@
 import './App.css'
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import CardFrame from './components/CardFrame.tsx';
-import DetailView from './components/DetailView.tsx';
 import Navigation from './components/Navigation.tsx';
 
 import AppState from './interfaces/appState.ts';
@@ -35,12 +34,19 @@ export default class App extends React.Component {
       <Router>
         <Navigation />
         <Routes>
+          {/* Default route - redirect to planets */}
+          <Route path="/" element={<Navigate to="/SW/planets" replace />} />
+          <Route path="/SW" element={<Navigate to="/SW/planets" replace />} />
+
+          {/* List routes */}
           <Route path="/SW/planets" element={<CardFrame items={this.state.planets} />} />
           <Route path="/SW/films" element={<CardFrame items={this.state.films} />} />
           <Route path="/SW/residents" element={<CardFrame items={this.state.residents} />} />
-          <Route path="/SW/planet/:itemName" element={<DetailView items={this.state.planets} />} />
-          <Route path="/SW/film/:itemName" element={<DetailView items={this.state.films} />} />
-          <Route path="/SW/resident/:itemName" element={<DetailView items={this.state.residents} />} />
+
+          {/* Detail routes - same component, different URL structure */}
+          <Route path="/SW/planet/:itemName" element={<CardFrame items={this.state.planets} />} />
+          <Route path="/SW/film/:itemName" element={<CardFrame items={this.state.films} />} />
+          <Route path="/SW/resident/:itemName" element={<CardFrame items={this.state.residents} />} />
         </Routes>
       </Router>
     );
