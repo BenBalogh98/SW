@@ -18,6 +18,7 @@ const RoutableCard: React.FC<RoutableCardProps> = ({
     itemType = 'planet'
 }) => {
     const navigate = useNavigate();
+    const [selected, setSelected] = React.useState(false);
 
     const handleCardSelect = (cardTitle: string) => {
         const encodedTitle = encodeURIComponent(cardTitle);
@@ -29,7 +30,9 @@ const RoutableCard: React.FC<RoutableCardProps> = ({
 
     return (
         <Card
-
+            isSelected={selected}
+            isLeaveButtonVisible={selected}
+            onClick={() => { setSelected(true); handleCardSelect(title); }}
             title={title}
             className={className}
             content={content}

@@ -9,6 +9,9 @@ export default interface CardProps {
     content: DetailsContent[],
     hasLeaveButton?: boolean,
     leaveButtonIMGContent?: string,
-    backgroundImage: string
+    backgroundImage: string,
+    isSelected?: boolean,
+    isLeaveButtonVisible?: boolean,
+    onClick?: () => void
 }
 

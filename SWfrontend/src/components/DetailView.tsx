@@ -25,17 +25,18 @@ const DetailView: React.FC<DetailViewProps> = ({ items }) => {
             backgroundColor: '#000'
         }}>
 
+            {item &&
+                <Card
+                    title={item.name}
+                    className={`${item.name} selected`}
+                    content={item.getDetailsContent()}
+                    hasLeaveButton={true}
+                    leaveButtonIMGContent={item.exitButtonIMG}
+                    backgroundImage={item.backgroundImage}
+                    onDeselect={handleBackClick}
+                    key={item.name}
+                />}
 
-            <Card
-                title={item.name}
-                className={`${item.name} selected`}
-                content={item.getDetailsContent()}
-                hasLeaveButton={true}
-                leaveButtonIMGContent={item.exitButtonIMG}
-                backgroundImage={item.backgroundImage}
-                onDeselect={handleBackClick}
-                key={item.name}
-            />
         </div>
     );
 };

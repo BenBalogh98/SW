@@ -14,7 +14,9 @@ export default class Card extends React.Component<CardProps> {
         content: [],
         hasLeaveButton: false,
         leaveButtonIMGContent: "",
-        backgroundImage: ""
+        backgroundImage: "",
+        isSelected: false,
+        isLeaveButtonVisible: false
     };
 
     public constructor(props: CardProps) {
@@ -66,7 +68,7 @@ export default class Card extends React.Component<CardProps> {
                     } else if (value instanceof Array) {
                         value = value.join(", ");
                     }
-                    return <div className={"SWCard-detail-container"}><div>{detail.displayName}</div><div className="SWCard-value-container">{value}</div></div>;
+                    return <div key={detail.displayName} className={"SWCard-detail-container"}><div>{detail.displayName}</div><div className="SWCard-value-container">{value}</div></div>;
                 })
             }
         </div>;
@@ -91,12 +93,13 @@ export default class Card extends React.Component<CardProps> {
     public render(): React.JSX.Element {
 
         return <div
+            key={this.props.title}
             className={this.getSWCcardClassName()}
-            onClick={() => { this.selectCard(); }}>
+            onClick={() => {/* this.selectCard(); */ this.props.onClick?.(); }}>
 
             <div className="title">{this.props.title}</div>
-            {this.state.isLeaveButtonVisible ? this.createLeaveButton() : ""}
-            <div>{this.state.isSelected ? this.createDetailContent() : ""}</div>
+            {this.props.isLeaveButtonVisible ? this.createLeaveButton() : ""}
+            {this.props.isSelected ? this.createDetailContent() : ""}
             <div className="SWCard-image-container">
                 <img className="SWCard-image" src={this.props.backgroundImage} />
             </div >
