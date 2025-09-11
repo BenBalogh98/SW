@@ -23,12 +23,14 @@ const CardFrameWrapper: React.FC<CardFrameProps> = (props) => {
 
     const handleCardSelect = (cardTitle: string) => {
         // Navigate to the detail route
+
         const itemType = getItemType();
         const encodedTitle = encodeURIComponent(cardTitle);
         navigate(`/SW/${itemType}/${encodedTitle}`);
     };
 
-    const handleCardDeselect = () => {
+    const handleCardDeselect = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
         // Navigate back to the list view
         const itemType = getItemType();
         navigate(`/SW/${itemType}s`); // Add 's' to make it plural for the list route
@@ -50,8 +52,8 @@ const CardFrameWrapper: React.FC<CardFrameProps> = (props) => {
                     hasLeaveButton={true}
                     leaveButtonIMGContent={item.exitButtonIMG}
                     backgroundImage={item.backgroundImage}
-                    onSelect={handleCardSelect}
-                    onDeselect={handleCardDeselect}
+                    onSelect={() => handleCardSelect(item.name)}
+                    onDeselect={(e) => handleCardDeselect(e)}
                     onClick={() => { handleCardSelect(item.name) }}
                 />;
             })}

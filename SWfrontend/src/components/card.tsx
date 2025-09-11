@@ -42,24 +42,24 @@ export default class Card extends React.Component<CardProps> {
     }
 
     // First calls the onDeselect function passed in the props, than shrinks the card and hides the information of the planet by changing the state.
-    private deselectCard(): void {
-        if (!this.state.isSelected) {
+    private deselectCard(e: React.MouseEvent<HTMLDivElement>): void {
+        this.props.onDeselect?.(e);
+        /*if (!this.state.isSelected) {
             return;
-        }
+        }*/
         // Clicking the card navigates, BUT since the card
         //  is recreated, its selected state is lost.
         // To fix this, the selected state needs to be managed here.
-        this.props.onDeselect?.();
-        this.setState({
-            isSelected: false,
-            isLeaveButtonVisible: false
-        }, () => {
-
-        });
+        /* this.props.onDeselect?.();
+         this.setState({
+             isSelected: false,
+             isLeaveButtonVisible: false
+         }, () => {
+ 
+         });*/
     }
 
     private createDetailContent(): React.JSX.Element {
-        debugger;
         return <div key={this.props.title} className={"SWCard-details-container"}>
             {
                 this.props.content.map((detail) => {
@@ -84,7 +84,7 @@ export default class Card extends React.Component<CardProps> {
     }
 
     private createLeaveButton(): React.JSX.Element {
-        return <div onClick={() => { this.deselectCard(); }} className="SWCard-leaveButton">{this.createLeaveButtonContent()}</div>;
+        return <div onClick={(e) => { this.deselectCard(e); }} className="SWCard-leaveButton">{this.createLeaveButtonContent()}</div>;
     }
 
     private getSWCcardClassName(): string {

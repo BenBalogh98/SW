@@ -4,7 +4,7 @@ export default interface CardProps {
     title: string;
     className: string;
     onSelect?: (planetToSelect: string) => void,
-    onDeselect?: () => void,
+    onDeselect?: (e: React.MouseEvent<HTMLDivElement>) => void,
     key: string,
     content: DetailsContent[],
     hasLeaveButton?: boolean,
