@@ -88,7 +88,7 @@ export default class Card extends React.Component<CardProps> {
     }
 
     private getSWCcardClassName(): string {
-        return "SWCard" + (this.state.isSelected ? " SWCard-selected" : " SWCard-hover") + " " + this.props.className;
+        return "SWCard" + (this.props.isSelected ? " SWCard-selected" : " SWCard-hover") + " " + this.props.className;
     }
 
     public render(): React.JSX.Element {
