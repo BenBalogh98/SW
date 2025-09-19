@@ -1,4 +1,4 @@
-import Item from "../interfaces/item";
+import Item from "./item";
 import { IFilm } from "../interfaces/SWApiResponse";
 
 export default class Film implements Item {

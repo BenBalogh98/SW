@@ -1,6 +1,6 @@
 import planetImages from "../consts/planetImages";
 import { IPlanet } from "../interfaces/SWApiResponse";
-import Item, { DetailsContent } from "../interfaces/item";
+import Item, { DetailsContent } from "./item";
 import { leaveButtonImage } from "../consts/leaveButtonImage";
 
 export default class Planet extends Item {

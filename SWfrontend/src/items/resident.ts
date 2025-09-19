@@ -1,4 +1,4 @@
-import Item, { DetailsContent } from "../interfaces/item";
+import Item, { DetailsContent } from "./item";
 import { IPeople } from "../interfaces/SWApiResponse";
 import Film from "./film";
 

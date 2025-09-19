@@ -1,0 +1,25 @@
+{
+  "name": "componenttests",
+  "version": "1.0.0",
+  "description": "component and possibly unit tests for the frontent",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^14.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@cypress/puppeteer": "^0.1.6",
+    "@cypress/webpack-preprocessor": "^6.0.4",
+    "@types/node": "^24.0.3",
+    "less": "^4.4.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "vite": "6.0.0"
+  }
+}

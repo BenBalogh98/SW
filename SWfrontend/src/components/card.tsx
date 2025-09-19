@@ -4,7 +4,6 @@ import CardState from "../interfaces/cardState";
 import "../styles/componentStyles/card.less";
 export default class Card extends React.Component<CardProps> {
     public state: CardState = {
-        isSelected: false,
         isLeaveButtonVisible: false
     };
     public props: CardProps = {
@@ -15,7 +14,6 @@ export default class Card extends React.Component<CardProps> {
         hasLeaveButton: false,
         leaveButtonIMGContent: "",
         backgroundImage: "",
-        isSelected: false,
         isLeaveButtonVisible: false
     };
 
@@ -24,39 +22,8 @@ export default class Card extends React.Component<CardProps> {
         this.props = props;
     }
 
-    // First calls the onSelect function passed in the props, than enlarges the card and displays the information of the planet by changing the state.
-    private selectCard(): void {
-        if (this.state.isSelected) {
-            return;
-        }
-        // Clicking the card navigates, BUT since the card
-        //  is recreated, its selected state is lost.
-        // To fix this, the selected state needs to be managed here.
-        this.props.onSelect?.(this.props.title);
-        this.setState({
-            isSelected: true,
-            isLeaveButtonVisible: true
-        }, () => {
-
-        });
-    }
-
-    // First calls the onDeselect function passed in the props, than shrinks the card and hides the information of the planet by changing the state.
     private deselectCard(e: React.MouseEvent<HTMLDivElement>): void {
         this.props.onDeselect?.(e);
-        /*if (!this.state.isSelected) {
-            return;
-        }*/
-        // Clicking the card navigates, BUT since the card
-        //  is recreated, its selected state is lost.
-        // To fix this, the selected state needs to be managed here.
-        /* this.props.onDeselect?.();
-         this.setState({
-             isSelected: false,
-             isLeaveButtonVisible: false
-         }, () => {
- 
-         });*/
     }
 
     private createDetailContent(): React.JSX.Element {
@@ -96,7 +63,7 @@ export default class Card extends React.Component<CardProps> {
         return <div
             key={this.props.title}
             className={this.getSWCcardClassName()}
-            onClick={() => {/* this.selectCard(); */ this.props.onClick?.(); }}>
+            onClick={() => { this.props.onClick?.(); }}>
 
             <div className="title">{this.props.title}</div>
             {this.props.isLeaveButtonVisible ? this.createLeaveButton() : ""}

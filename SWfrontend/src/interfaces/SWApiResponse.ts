@@ -1,4 +1,4 @@
-import Item from "./item";
+import Item from "../items/item";
 
 export interface IPlanet extends Item {
     name: string;

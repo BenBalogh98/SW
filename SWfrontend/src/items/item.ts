@@ -1,3 +1,10 @@
+interface ItemConstructor {
+    name: string;
+    url: string;
+    exitButtonIMG: string;
+    backgroundImage: string;
+}
+
 /**
  * Describes some basic properties of items. Each item implements getDetailsContent on their own way with their own properties, so pointless to make this a base class.
  */
@@ -8,7 +15,7 @@ export default class Item {
     public exitButtonIMG: string;
     public backgroundImage: string;
 
-    constructor(itemProperties: Item) {
+    constructor(itemProperties: ItemConstructor) {
         ({
             name: this.name,
             url: this.url,

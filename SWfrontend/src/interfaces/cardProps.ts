@@ -1,4 +1,4 @@
-import { DetailsContent } from "./item";
+import { DetailsContent } from "../items/item";
 
 export default interface CardProps {
     title: string;
