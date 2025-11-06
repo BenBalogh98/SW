@@ -22,7 +22,8 @@ jobs:
           working-directory: pw
       
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps 
+      working-directory: pw
       
     - name: Run Playwright tests
       run: ENV=pipe npx playwright test
