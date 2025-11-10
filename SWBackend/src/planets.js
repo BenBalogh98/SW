@@ -9,6 +9,7 @@ module.exports = [
         "terrain": "desert",
         "surface_water": "1",
         "population": "200000",
+        "distanceFromSun": 67,
         "residents": [
             "https://swapi.dev/api/people/1/",
             "https://swapi.dev/api/people/2/",
@@ -42,6 +43,7 @@ module.exports = [
         "terrain": "grasslands, mountains",
         "surface_water": "40",
         "population": "2000000000",
+        "distanceFromSun": 23,
         "residents": [
             "https://swapi.dev/api/people/5/",
             "https://swapi.dev/api/people/68/",
@@ -65,6 +67,7 @@ module.exports = [
         "terrain": "jungle, rainforests",
         "surface_water": "8",
         "population": "1000",
+        "distanceFromSun": 89,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/1/"
@@ -83,6 +86,7 @@ module.exports = [
         "terrain": "tundra, ice caves, mountain ranges",
         "surface_water": "100",
         "population": "unknown",
+        "distanceFromSun": 95,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/2/"
@@ -101,6 +105,7 @@ module.exports = [
         "terrain": "swamp, jungles",
         "surface_water": "8",
         "population": "unknown",
+        "distanceFromSun": 45,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/2/",
@@ -121,6 +126,7 @@ module.exports = [
         "terrain": "gas giant",
         "surface_water": "0",
         "population": "6000000",
+        "distanceFromSun": 78,
         "residents": [
             "https://swapi.dev/api/people/26/"
         ],
@@ -141,6 +147,7 @@ module.exports = [
         "terrain": "forests, mountains, lakes",
         "surface_water": "8",
         "population": "30000000",
+        "distanceFromSun": 34,
         "residents": [
             "https://swapi.dev/api/people/30/"
         ],
@@ -161,6 +168,7 @@ module.exports = [
         "terrain": "grassy hills, swamps, forests, mountains",
         "surface_water": "12",
         "population": "4500000000",
+        "distanceFromSun": 12,
         "residents": [
             "https://swapi.dev/api/people/3/",
             "https://swapi.dev/api/people/21/",
@@ -194,6 +202,7 @@ module.exports = [
         "terrain": "cityscape, mountains",
         "surface_water": "unknown",
         "population": "1000000000000",
+        "distanceFromSun": 56,
         "residents": [
             "https://swapi.dev/api/people/34/",
             "https://swapi.dev/api/people/55/",
@@ -219,6 +228,7 @@ module.exports = [
         "terrain": "ocean",
         "surface_water": "100",
         "population": "1000000000",
+        "distanceFromSun": 81,
         "residents": [
             "https://swapi.dev/api/people/22/",
             "https://swapi.dev/api/people/72/",
@@ -241,6 +251,7 @@ module.exports = [
         "terrain": "rock, desert, mountain, barren",
         "surface_water": "5",
         "population": "100000000000",
+        "distanceFromSun": 92,
         "residents": [
             "https://swapi.dev/api/people/63/"
         ],
@@ -261,6 +272,7 @@ module.exports = [
         "terrain": "scrublands, savanna, canyons, sinkholes",
         "surface_water": "0.9",
         "population": "95000000",
+        "distanceFromSun": 73,
         "residents": [
             "https://swapi.dev/api/people/83/"
         ],
@@ -281,6 +293,7 @@ module.exports = [
         "terrain": "volcanoes, lava rivers, mountains, caves",
         "surface_water": "0",
         "population": "20000",
+        "distanceFromSun": 15,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/6/"
@@ -299,6 +312,7 @@ module.exports = [
         "terrain": "jungle, forests, lakes, rivers",
         "surface_water": "60",
         "population": "45000000",
+        "distanceFromSun": 41,
         "residents": [
             "https://swapi.dev/api/people/13/",
             "https://swapi.dev/api/people/80/"
@@ -320,6 +334,7 @@ module.exports = [
         "terrain": "airless asteroid",
         "surface_water": "0",
         "population": "1000000",
+        "distanceFromSun": 68,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/6/"
@@ -338,6 +353,7 @@ module.exports = [
         "terrain": "glaciers, mountains, ice canyons",
         "surface_water": "unknown",
         "population": "19000000",
+        "distanceFromSun": 87,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/6/"
@@ -356,6 +372,7 @@ module.exports = [
         "terrain": "fungus forests",
         "surface_water": "unknown",
         "population": "8500000",
+        "distanceFromSun": 29,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/6/"
@@ -374,6 +391,7 @@ module.exports = [
         "terrain": "mountains, fields, forests, rock arches",
         "surface_water": "unknown",
         "population": "10000000",
+        "distanceFromSun": 52,
         "residents": [
             "https://swapi.dev/api/people/33/"
         ],
@@ -394,6 +412,7 @@ module.exports = [
         "terrain": "caves, desert, mountains, volcanoes",
         "surface_water": "unknown",
         "population": "1400000000",
+        "distanceFromSun": 38,
         "residents": [],
         "films": [
             "https://swapi.dev/api/films/6/"
@@ -412,6 +431,7 @@ module.exports = [
         "terrain": "grass",
         "surface_water": "unknown",
         "population": "unknown",
+        "distanceFromSun": 63,
         "residents": [
             "https://swapi.dev/api/people/10/"
         ],
