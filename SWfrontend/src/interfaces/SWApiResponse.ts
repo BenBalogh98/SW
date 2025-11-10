@@ -16,10 +16,6 @@ export interface IPlanet extends Item {
     edited: Date;
     url: string;
 }
-export interface IPlanets {
-    count: number;
-    results: IPlanet[];
-}
 
 export interface IPeople extends Item {
     name: string;
@@ -40,11 +36,6 @@ export interface IPeople extends Item {
     url: string;
 }
 
-export interface IPeoples {
-    count: number;
-    results: IPeople[];
-}
-
 export interface IFilm extends Item {
     title: string
     episode_id: number
@@ -60,9 +51,4 @@ export interface IFilm extends Item {
     created: Date
     edited: Date
     url: string
-}
-
-export interface IFilms {
-    count: number
-    results: IFilm[]
 }

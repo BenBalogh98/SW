@@ -1,5 +1,5 @@
 import SwapiRequests from "./ajaxControls/swapiRequests";
-import { IFilms, IPeoples, IPlanets } from "./interfaces/SWApiResponse";
+import { IFilm, IPeople, IPlanet } from "./interfaces/SWApiResponse";
 import Film from "./items/film";
 import Planet from "./items/planet";
 import People from "./items/resident";
@@ -53,20 +53,20 @@ export default class Logic {
         });
     }
 
-    public createItems(people: IPeoples, films: IFilms, planets: IPlanets): void {
+    public createItems(people: IPeople[], films: IFilm[], planets: IPlanet[]): void {
         this.people = [];
         this.films = [];
         this.planets = [];
 
-        people.results.forEach((people) => {
+        people.forEach((people) => {
             this.people.push(new People(people));
         });
 
-        films.results.forEach((film) => {
+        films.forEach((film) => {
             this.films.push(new Film(film));
         });
 
-        planets.results.forEach((planet) => {
+        planets.forEach((planet) => {
             this.planets.push(new Planet(planet));
         });
 

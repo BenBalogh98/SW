@@ -1,6 +1,6 @@
-const planets = require("./planets");
-const people = require("./people");
-const films = require("./films");
+const planets = require("./src/planets");
+const people = require("./src/people");
+const films = require("./src/films");
 const express = require('express'); // Importing express
 const bodyParser = require('body-parser'); // Importing body-parser to parse JSON bodies
 const cors = require('cors'); // Importing CORS for handling cross-origin requests
@@ -46,6 +46,17 @@ app.listen(port, () => {
 
 app.get("/planets", (req, res) => {
     res.send(planets);
+});
+
+app.get("/planets/:name", (req, res) => {
+    const name = req.params.name.toLowerCase();
+    const planet = planets.find(p => p.name.toLowerCase() === name);
+
+    if (!planet) {
+        return res.status(404).send({ error: "Planet not found" });
+    }
+
+    res.send(planet);
 });
 
 app.get("/people", (req, res) => {
