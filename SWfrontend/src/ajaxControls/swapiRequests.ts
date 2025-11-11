@@ -1,21 +1,21 @@
 import BaseRequest from "./baseRequest";
 import { BASEURL, FILMS, PEOPLE, PLANETS } from "../consts/swapiConsts";
-import { IFilms, IPeoples, IPlanets } from "../interfaces/SWApiResponse";
+import { IFilm, IPeople, IPlanet } from "../interfaces/SWApiResponse";
 
 export default class SwapiRequests extends BaseRequest {
     constructor() {
         super((import.meta as any).env.VITE_BASEURL);
     }
 
-    public async getSWPeople(): Promise<IPeoples> {
-        return await super.requestData<IPeoples>(PEOPLE);
+    public async getSWPeople(): Promise<IPeople[]> {
+        return await super.requestData<IPeople[]>(PEOPLE);
     }
 
-    public async getSWFilms(): Promise<IFilms> {
-        return await super.requestData<IFilms>(FILMS);
+    public async getSWFilms(): Promise<IFilm[]> {
+        return await super.requestData<IFilm[]>(FILMS);
     }
 
-    public async getSWPlanets(): Promise<IPlanets> {
-        return await super.requestData<IPlanets>(PLANETS);
+    public async getSWPlanets(): Promise<IPlanet[]> {
+        return await super.requestData<IPlanet[]>(PLANETS);
     }
 }
