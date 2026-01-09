@@ -1,4 +1,5 @@
 import SwapiRequests from "./ajaxControls/swapiRequests";
+import { Data } from "./interfaces/appState";
 import { IFilm, IPeople, IPlanet } from "./interfaces/SWApiResponse";
 import Film from "./items/film";
 import Planet from "./items/planet";
@@ -11,16 +12,18 @@ export default class Logic {
     public planets: Planet[] = [];
     private swapiRequests: SwapiRequests = new SwapiRequests();
 
-    public async loadAllData(): Promise<{ films: Film[], people: People[], planets: Planet[] }> {
-        // Load all data from the API
-        const people = await this.swapiRequests.getSWPeople();
-        const films = await this.swapiRequests.getSWFilms();
-        const planets = await this.swapiRequests.getSWPlanets();
-        this.createItems(people, films, planets);
+    public async loadAllData(): Promise<[IPeople[], IFilm[], IPlanet[]]> {
+        const people = this.swapiRequests.getSWPeople();
+        const films = this.swapiRequests.getSWFilms();
+        const planets = this.swapiRequests.getSWPlanets();
 
-        return new Promise<{ films: Film[], people: People[], planets: Planet[] }>((resolve) => {
-            resolve({ films: this.films, people: this.people, planets: this.planets })
-        });
+        return Promise.all([people, films, planets]);
+    }
+
+    public async getData(): Promise<{ films: Film[], people: People[], planets: Planet[] }> {
+        const [people, films, planets] = await this.loadAllData();
+        this.createItems(people, films, planets);
+        return { films: this.films, people: this.people, planets: this.planets }
     }
 
     private matchItems(): void {

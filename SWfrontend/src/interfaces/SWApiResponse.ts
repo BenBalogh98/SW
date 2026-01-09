@@ -1,6 +1,6 @@
-import Item from "../items/item";
+// DTOs for Star Wars API responses
 
-export interface IPlanet extends Item {
+export interface IPlanet {
     name: string;
     rotation_period: string;
     orbital_period: string;
@@ -15,9 +15,10 @@ export interface IPlanet extends Item {
     created: Date;
     edited: Date;
     url: string;
+    distanceFromSun?: number;
 }
 
-export interface IPeople extends Item {
+export interface IPeople {
     name: string;
     height: string;
     mass: string;
@@ -36,7 +37,7 @@ export interface IPeople extends Item {
     url: string;
 }
 
-export interface IFilm extends Item {
+export interface IFilm {
     title: string
     episode_id: number
     opening_crawl: string

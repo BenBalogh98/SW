@@ -16,7 +16,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount(): void {
-    new Logic().loadAllData().then((items) => {
+    new Logic().getData().then((items) => {
       this.setState({
         planets: items.planets,
         films: items.films,

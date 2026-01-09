@@ -11,6 +11,6 @@
         "strict": false
     },
     "exclude": ["cypress/support/commands.js", "cypress/support/component.js", "cypress/support/e2e.js"],
-    "include": ["cypress"]
+    "include": ["cypress", "node"]
     
 }

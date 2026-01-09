@@ -23,7 +23,7 @@ export default class Planet extends Item {
     public exitButtonIMG: string = leaveButtonImage;
     public backgroundImage: string;
 
-    constructor(planetProperties: IPlanet) {
+    constructor(planetProperties: Omit<IPlanet, "exitButtonIMG" | "backgroundImage">) {
         super(planetProperties);
 
         ({

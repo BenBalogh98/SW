@@ -33,7 +33,7 @@ const CardFrameWrapper: React.FC<CardFrameProps> = (props) => {
         e.stopPropagation();
         // Navigate back to the list view
         const itemType = getItemType();
-        navigate(`/SW/${itemType}s`); // Add 's' to make it plural for the list route
+        navigate(`/SW/${itemType}s`);
     };
 
     return (

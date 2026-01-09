@@ -1,8 +1,6 @@
 interface ItemConstructor {
     name: string;
     url: string;
-    exitButtonIMG: string;
-    backgroundImage: string;
 }
 
 /**
@@ -12,17 +10,13 @@ export default class Item {
     public name: string;
     public url: string;
 
-    public exitButtonIMG: string;
-    public backgroundImage: string;
+    public exitButtonIMG: string | undefined = undefined;
+    public backgroundImage: string | undefined = undefined;
 
     constructor(itemProperties: ItemConstructor) {
         ({
             name: this.name,
             url: this.url,
-            exitButtonIMG: this.exitButtonIMG,
-            backgroundImage: this.backgroundImage
-
-
         } = itemProperties);
     }
 

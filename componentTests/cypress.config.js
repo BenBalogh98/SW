@@ -1,13 +1,12 @@
 import { defineConfig } from 'cypress'
-
-
+import viteConfig from '../SWfrontend/vite.config.js';
 
 export default defineConfig({
   component: {
     devServer: {
       framework: "react",
       bundler: "vite",
-      viteConfig: "../SWfrontend/vite.config.js",
+      viteConfig,
     },
     port: 4040,
   },
