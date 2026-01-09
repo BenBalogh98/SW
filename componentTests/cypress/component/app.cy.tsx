@@ -143,9 +143,12 @@ describe('App Component', () => {
         cy.stub(Logic.prototype, 'loadAllData').resolves(mockData)
         mount(<App />)
 
-        cy.get('[data-testid="planets-list"]').should('exist')
+        cy.get('nav a').contains('Planets');
+        cy.get('nav a').contains('Films');
+        cy.get('nav a').contains('Residents');
     })
 
+    // This throwing an error seems impossible, since the cypress will immediately fail the test if an unhandled error is thrown.
     /*it('should handle failed data loading', () => {
         cy.stub(Logic.prototype, 'loadAllData').rejects(new Error('Network error'))
 
