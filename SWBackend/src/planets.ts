@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     {
         "name": "Tatooine",
         "rotation_period": "23",

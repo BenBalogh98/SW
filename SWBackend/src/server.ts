@@ -1,6 +1,9 @@
-const planets = require("./src/planets");
-const people = require("./src/people");
-const films = require("./src/films");
+import planets from "./planets";
+import films from "./films";
+import people from "./people";
+//const planets = require("./planets");
+//const people = require("./people");
+//const films = require("./films");
 const express = require('express'); // Importing express
 const bodyParser = require('body-parser'); // Importing body-parser to parse JSON bodies
 const cors = require('cors'); // Importing CORS for handling cross-origin requests
@@ -41,7 +44,7 @@ app.use(express.json());
 // Set up the server to listen on port 3000
 const port = 3000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${process.env.PORT || port}`);
 });
 
 app.get("/planets", (req, res) => {

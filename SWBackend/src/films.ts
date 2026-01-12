@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     {
         "title": "A New Hope",
         "episode_id": 4,

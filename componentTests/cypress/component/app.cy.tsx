@@ -147,12 +147,4 @@ describe('App Component', () => {
         cy.get('nav a').contains('Films');
         cy.get('nav a').contains('Residents');
     })
-
-    // This throwing an error seems impossible, since the cypress will immediately fail the test if an unhandled error is thrown.
-    /*it('should handle failed data loading', () => {
-        cy.stub(Logic.prototype, 'loadAllData').rejects(new Error('Network error'))
-
-        mount(<App />)
-        cy.contains('Loading...').should('be.visible')
-    })*/
 })
