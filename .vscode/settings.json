@@ -1,0 +1,38 @@
+{
+  "cucumberautocomplete.steps": [
+    "pw/steps/**/*.ts"
+  ],
+  "cucumberautocomplete.syncfeatures": "pw/features/**/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepsInvariants": true,
+  "cucumberautocomplete.customParameters": [
+    {
+      "parameter": "{string}",
+      "value": "\"([^\"]*)\""
+    },
+    {
+      "parameter": "{int}",
+      "value": "(\\d+)"
+    },
+    {
+      "parameter": "{word}",
+      "value": "(\\w+)"
+    }
+  ],
+  "cucumberautocomplete.skipDocStringsFormat": true,
+  "cucumberautocomplete.formatConfOverride": {
+    "And": 3,
+    "But": 3,
+    "Scenario": 1,
+    "Given": 3,
+    "When": 3,
+    "Then": 3
+  },
+  "cucumberautocomplete.onTypeFormat": true,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  }
+}
