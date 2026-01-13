@@ -1,3 +1,5 @@
+Feature: Planet Card Details
+
 Scenario: View detailed information about a planet
 Given I am on the planet card page
 When I click on the "Tatooine" planet card

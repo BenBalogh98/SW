@@ -1,5 +1,5 @@
-import { test as base, expect } from '@playwright/test';
-import "./planet";
+import { test as base } from 'playwright-bdd';
+import { expect } from '@playwright/test';
 import PlanetPage from '../pages/planetPage';
 
 type StarWarsFixture = {
