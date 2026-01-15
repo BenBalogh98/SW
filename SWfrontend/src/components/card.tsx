@@ -36,7 +36,7 @@ export default class Card extends React.Component<CardProps> {
                     } else if (value instanceof Array) {
                         value = value.join(", ");
                     }
-                    return <div key={detail.displayName} className={"SWCard-detail-container"}><div>{detail.displayName}</div><div className="SWCard-value-container">{value}</div></div>;
+                    return <div key={detail.displayName} className={"SWCard-detail-row"}><div>{detail.displayName}</div><div className="SWCard-value-container">{value}</div></div>;
                 })
             }
         </div>;

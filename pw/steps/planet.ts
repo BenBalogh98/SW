@@ -12,6 +12,6 @@ When('I click on the {string} planet card', async ({ page, planetPage }, planetN
 });
 
 Then('I should see detailed information about {string}', async ({ planetPage }, planetName: string) => {
-    /*const details = await planetPage.getPlanetDetails(planetName);
-    expect(details).toBeTruthy();*/
+    const details = await planetPage.getPlanetDetails(planetName);
+    expect(details).toBeTruthy();
 });

@@ -1,14 +1,14 @@
 import { test as base } from 'playwright-bdd';
 import { expect } from '@playwright/test';
-import PlanetPage from '../pages/planetPage';
+import Card from '../pages/planetPage';
 
 type StarWarsFixture = {
-    planetPage: PlanetPage;
+    planetPage: Card;
 };
 
 export const test = base.extend<StarWarsFixture>({
     planetPage: async ({ page }, use) => {
-        const planetPage = new PlanetPage(page);
+        const planetPage = new Card(page);
         await use(planetPage);
     }
 });

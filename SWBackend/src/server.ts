@@ -4,11 +4,9 @@ import people from "./people";
 //const planets = require("./planets");
 //const people = require("./people");
 //const films = require("./films");
-const express = require('express'); // Importing express
-const bodyParser = require('body-parser'); // Importing body-parser to parse JSON bodies
-const cors = require('cors'); // Importing CORS for handling cross-origin requests
+const express = require('express');
+const cors = require('cors');
 
-// Define allowed origins first
 const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:4173",
@@ -19,29 +17,25 @@ const allowedOrigins = [
     "https://benbalogh98.github.io"
 ];
 
-const app = express(); // Creating an express app
+const app = express();
 
-// Configure CORS properly
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or curl requests)
         if (!origin) return callback(null, true);
 
-        // Check if the origin is in the allowed list
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true, // Allow cookies if needed
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 
-// Set up the server to listen on port 3000
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${process.env.PORT || port}`);

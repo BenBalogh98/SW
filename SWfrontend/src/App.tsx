@@ -34,9 +34,9 @@ export default class App extends React.Component {
       <Router>
         <Navigation />
         <Routes>
-          {/* Default route - redirect to planets */}
-          <Route path="/" element={<Navigate to="/SW/planets" replace />} />
-          <Route path="/SW" element={<Navigate to="/SW/planets" replace />} />
+          {/* Default route - will be a landing page later on */}
+          <Route path="/" element={<Navigate to="/SW" replace />} />
+          <Route path="/SW" element={<Navigate to="/SW" replace />} />
 
           {/* List routes */}
           <Route path="/SW/planets" element={<CardFrame items={this.state.planets} />} />
