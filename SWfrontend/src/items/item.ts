@@ -22,7 +22,7 @@ export default class Item {
 
     public getDetailsContent(): DetailsContent[] {
         return [
-            { displayName: "nane", value: this.name },
+            { displayName: "name", value: this.name },
             { displayName: "URL", value: this.url }
         ];
     }

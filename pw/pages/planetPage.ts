@@ -1,8 +1,10 @@
 import { Page as BasePage } from '@playwright/test';
 
-export default class Card {
+export default class PlanetPage {
     private page: BasePage;
     private dDetailsContainer: string = ".SWCard-details-container";
+
+
 
     constructor(page: BasePage) {
         this.page = page;
