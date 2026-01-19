@@ -9,13 +9,25 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: componentTests
+        
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
+      with:
+          working-directory: componentTests
+        
+      
     - name: Cypress run
       uses: cypress-io/github-action@v6
       with:
           start: npx cypress run --component
+          
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
