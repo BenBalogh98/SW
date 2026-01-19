@@ -16,3 +16,12 @@ Then('I should see detailed information about {string}', async ({ planetPage }, 
     const details = await planetPage.getPlanetDetails(planetName);
     expect(details).toBeTruthy();
 });
+
+When('I navigate back using the leave button', async ({ page }) => {
+    await page.click('.SWCard-leave-button');
+});
+
+Then('I should be back on the planets list page', async ({ page }) => {
+    const url = page.url();
+    expect(url).toContain('/SW/planets');
+});
