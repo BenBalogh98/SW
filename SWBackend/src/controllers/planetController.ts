@@ -2,6 +2,11 @@ import planets from "../planets";
 import { Request, Response } from 'express';
 
 export default class PlanetController {
+
+    constructor() {
+
+    }
+
     getPlanets(req: Request, res: Response) {
         res.status(200).send(planets);
     }
