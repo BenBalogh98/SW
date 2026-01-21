@@ -1,6 +1,7 @@
 import './App.css'
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import LandingPage from './pages/LandingPage.tsx';
 import PlanetsPage from './pages/PlanetsPage.tsx';
 import FilmsPage from './pages/FilmsPage.tsx';
 import ResidentsPage from './pages/ResidentsPage.tsx';
@@ -34,9 +35,9 @@ export default class App extends React.Component {
     return (
       <Router>
         <Routes>
-          {/* Default route - will be a landing page later on */}
+          {/* Default route */}
           <Route path="/" element={<Navigate to="/SW" replace />} />
-          <Route path="/SW" element={<Navigate to="/SW" replace />} />
+          <Route path="/SW" element={<LandingPage />} />
 
           {/* List routes */}
           <Route path="/SW/planets" element={<PlanetsPage planets={this.state.planets} />} />
