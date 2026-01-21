@@ -1,47 +1,29 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import '../styles/componentStyles/navigation.less';
 
 const Navigation: React.FC = () => {
     const location = useLocation();
 
-    const navStyle = {
-        padding: '20px',
-        backgroundColor: '#1a1a1a',
-        marginBottom: '20px'
-    };
-
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none',
-        padding: '10px 20px',
-        margin: '0 10px',
-        borderRadius: '5px',
-        backgroundColor: '#333',
-        transition: 'background-color 0.2s'
-    };
-
-    const activeLinkStyle = {
-        ...linkStyle,
-        backgroundColor: '#007bff'
-    };
+    const isActive = (path: string) => location.pathname === path;
 
     return (
-        <nav style={navStyle}>
+        <nav className="navigation">
             <Link
                 to="/SW/planets"
-                style={location.pathname === '/SW/planets' ? activeLinkStyle : linkStyle}
+                className={`nav-link ${isActive('/SW/planets') ? 'active' : ''}`}
             >
                 Planets
             </Link>
             <Link
                 to="/SW/films"
-                style={location.pathname === '/SW/films' ? activeLinkStyle : linkStyle}
+                className={`nav-link ${isActive('/SW/films') ? 'active' : ''}`}
             >
                 Films
             </Link>
             <Link
                 to="/SW/residents"
-                style={location.pathname === '/SW/residents' ? activeLinkStyle : linkStyle}
+                className={`nav-link ${isActive('/SW/residents') ? 'active' : ''}`}
             >
                 Residents
             </Link>

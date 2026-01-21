@@ -7,7 +7,9 @@ interface PlanetsPageProps {
 }
 
 const PlanetsPage: React.FC<PlanetsPageProps> = ({ planets }) => {
-    return <CardFrame items={planets} />;
+    return <>
+        <CardFrame items={planets} />
+    </>
 };
 
 export default PlanetsPage;

@@ -6,7 +6,7 @@ const router = Router();
 const planetController = new PlanetController();
 
 router.get("/", planetController.getPlanets);
+router.get("/search", planetController.searchPlanets);
 router.get("/:name", planetController.getPlanetByName);
-router.get("/search/:term", planetController.searchPlanets);
 
 export default router;
