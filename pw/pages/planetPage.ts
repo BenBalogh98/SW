@@ -14,4 +14,6 @@ export default class PlanetPage {
         const detailsLocator = this.page.locator(this.dDetailsContainer);
         return detailsLocator.textContent();
     }
+
+
 }

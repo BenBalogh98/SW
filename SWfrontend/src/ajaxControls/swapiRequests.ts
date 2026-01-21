@@ -8,14 +8,18 @@ export default class SwapiRequests extends BaseRequest {
     }
 
     public async getSWPeople(): Promise<IPeople[]> {
-        return await super.requestData<IPeople[]>(PEOPLE);
+        return await super.getData<IPeople[]>(PEOPLE);
     }
 
     public async getSWFilms(): Promise<IFilm[]> {
-        return await super.requestData<IFilm[]>(FILMS);
+        return await super.getData<IFilm[]>(FILMS);
     }
 
     public async getSWPlanets(): Promise<IPlanet[]> {
-        return await super.requestData<IPlanet[]>(PLANETS);
+        return await super.getData<IPlanet[]>(PLANETS);
+    }
+
+    public async searchSWFilms(searchTerm: string): Promise<IFilm[]> {
+        return await super.getData<IFilm[]>(`${FILMS}/?search=${searchTerm}`);
     }
 }
