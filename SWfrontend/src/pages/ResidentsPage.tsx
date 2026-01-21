@@ -1,4 +1,5 @@
 import React from "react";
+import Navigation from "../components/Navigation";
 import CardFrame from "../components/CardFrame";
 import People from "../items/resident";
 
@@ -6,8 +7,13 @@ interface ResidentsPageProps {
     residents: People[];
 }
 
-export default class ResidentsPage extends React.Component<ResidentsPageProps> {
-    render() {
-        return <CardFrame items={this.props.residents} />;
-    }
-}
+const ResidentsPage: React.FC<ResidentsPageProps> = ({ residents }) => {
+    return (
+        <>
+            <Navigation showSearch={false} />
+            <CardFrame items={residents} />
+        </>
+    );
+};
+
+export default ResidentsPage;

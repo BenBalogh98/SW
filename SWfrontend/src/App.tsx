@@ -1,7 +1,6 @@
 import './App.css'
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navigation from './components/Navigation.tsx';
 import PlanetsPage from './pages/PlanetsPage.tsx';
 import FilmsPage from './pages/FilmsPage.tsx';
 import ResidentsPage from './pages/ResidentsPage.tsx';
@@ -34,7 +33,6 @@ export default class App extends React.Component {
 
     return (
       <Router>
-        <Navigation />
         <Routes>
           {/* Default route - will be a landing page later on */}
           <Route path="/" element={<Navigate to="/SW" replace />} />
