@@ -20,6 +20,10 @@ export default class SwapiRequests extends BaseRequest {
     }
 
     public async searchSWFilms(searchTerm: string): Promise<IFilm[]> {
-        return await super.getData<IFilm[]>(`${FILMS}/?search=${searchTerm}`);
+        return await super.getData<IFilm[]>(`${FILMS}/search?${searchTerm}`);
+    }
+
+    public async searchSWPlanets(searchTerm: string): Promise<IPlanet[]> {
+        return await super.getData<IPlanet[]>(`${PLANETS}/search?${searchTerm}`);
     }
 }

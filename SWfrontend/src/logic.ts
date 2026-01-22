@@ -20,6 +20,12 @@ export default class Logic {
         return Promise.all([people, films, planets]);
     }
 
+    public async searchPlanets(searchTerm: string): Promise<Planet[]> {
+        const planetsData = await this.swapiRequests.searchSWPlanets(searchTerm);
+        this.createPlanets(planetsData);
+        return this.planets;
+    }
+
     public async getData(): Promise<{ films: Film[], people: People[], planets: Planet[] }> {
         const [people, films, planets] = await this.loadAllData();
         this.createItems(people, films, planets);
@@ -74,6 +80,27 @@ export default class Logic {
         });
 
         this.matchItems();
+    }
+
+    private createPeople(peopleData: IPeople[]): void {
+        this.people = [];
+        peopleData.forEach((people) => {
+            this.people.push(new People(people));
+        });
+    }
+
+    private createFilms(filmData: IFilm[]): void {
+        this.films = [];
+        filmData.forEach((film) => {
+            this.films.push(new Film(film));
+        });
+    }
+
+    private createPlanets(planetData: IPlanet[]): void {
+        this.planets = [];
+        planetData.forEach((planet) => {
+            this.planets.push(new Planet(planet));
+        });
     }
 
 }
