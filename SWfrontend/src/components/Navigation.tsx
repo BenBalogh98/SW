@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/componentStyles/navigation.less';
+import { debounce } from 'lodash';
 
 interface NavigationProps {
     showSearch?: boolean;
@@ -21,7 +22,7 @@ const Navigation: React.FC<NavigationProps> = ({
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setSearchTerm(value);
-        onSearch?.(value);
+        debounce(() => onSearch?.(value), 300)();
     };
 
     return (

@@ -101,6 +101,8 @@ export default class Logic {
         planetData.forEach((planet) => {
             this.planets.push(new Planet(planet));
         });
+
+        this.matchItems();
     }
 
 }
