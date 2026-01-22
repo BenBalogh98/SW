@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import CardFrame from "../components/CardFrame";
 import Planet from "../items/planet";
@@ -9,19 +10,18 @@ interface PlanetsPageProps {
 }
 
 const PlanetsPage: React.FC<PlanetsPageProps> = ({ planets, onSearch }) => {
+    const { itemName } = useParams<{ itemName: string }>();
 
     const handleSearchChange = (searchTerm: string) => {
-        // Please modify the searchTerm to be usable as the name parameter of the search API
+        // This is just a basic POC now.
         searchTerm = "name=" + searchTerm;
-
-
         onSearch(searchTerm);
     }
 
     return (
         <>
             <Navigation
-                showSearch={true}
+                showSearch={!itemName}
                 onSearch={handleSearchChange}
                 searchPlaceholder="Search planets..."
             />
