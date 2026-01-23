@@ -2,7 +2,7 @@ import App from '../../../SWFrontend/src/App';
 import Logic from '../../../SWFrontend/src/logic';
 import { mount } from 'cypress/react';
 import { Data } from '../../../SWFrontend/src/interfaces/appState';
-import { IFilm, IPeople, IPlanet } from '../../../SWfrontend/src/interfaces/SWApiResponse';
+import { IFilm, IPeople, IPlanet } from '../../../SWFrontend/src/interfaces/SWApiResponse';
 
 describe('App Component', () => {
     it('should render loading state initially', () => {

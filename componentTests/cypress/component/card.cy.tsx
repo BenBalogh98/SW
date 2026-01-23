@@ -1,7 +1,7 @@
-import Card from "../../../SWfrontend/src/components/card";
-import Item, { DetailsContent } from "../../../SWfrontend/src/items/item";
+import Card from "../../../SWFrontend/src/components/card";
+import Item, { DetailsContent } from "../../../SWFrontend/src/items/item";
 import { mount } from 'cypress/react';
-import Planet from "../../../SWfrontend/src/items/planet";
+import Planet from "../../../SWFrontend/src/items/planet";
 
 describe("<card /> component", () => {
 

@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [residents, setResidents] = useState<People[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const logic = new Logic();
+  const [logic] = useState(() => new Logic());
 
   useEffect(() => {
     logic.getData().then((items) => {
@@ -42,6 +42,7 @@ const App: React.FC = () => {
         {/* Default route */}
         <Route path="/" element={<Navigate to="/SW" replace />} />
         <Route path="/SW" element={<LandingPage />} />
+        <Route path="/SW/" element={<LandingPage />} />
 
         {/* List routes */}
         <Route path="/SW/planets" element={<PlanetsPage planets={planets} onSearch={handlePlanetSearch} />} />
