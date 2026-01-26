@@ -1,35 +1,34 @@
-name: Playwright Docker Tests
+name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch:
-
 
 jobs:
   playwright:
-    name: 'Playwright Tests'
     runs-on: ubuntu-latest
+
     container:
       image: mcr.microsoft.com/playwright:v1.58.0-noble
       options: --user 1001
+
+    defaults:
+      run:
+        working-directory: pw
+
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
+
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-              working-directory: pw
+        run: npm ci
+
       - name: Run Playwright tests
-        run: ENV=pipe npx playwright test
-        working-directory: pw
+        run: npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: pw/playwright-report/
-          retention-days: 30
+          path: pw/playwright-report
