@@ -1,16 +1,18 @@
 import './App.css'
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LandingPage from './pages/LandingPage.tsx';
-import PlanetsPage from './pages/PlanetsPage.tsx';
-import FilmsPage from './pages/FilmsPage.tsx';
-import ResidentsPage from './pages/ResidentsPage.tsx';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import Logic from './logic.ts';
 import Planet from './items/planet.ts';
 import Film from './items/film.ts';
 import People from './items/resident.ts';
+import { AppRoutes } from './AppRoutes.tsx';
 
-const App: React.FC = () => {
+interface AppProps {
+  Router?: React.ComponentType<{ children: React.ReactNode }>;
+}
+
+const App: React.FC<AppProps> = ({ Router: RouterComponent = Router }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [films, setFilms] = useState<Film[]>([]);
   const [residents, setResidents] = useState<People[]>([]);
@@ -37,24 +39,14 @@ const App: React.FC = () => {
   }
 
   return (
-    <Router>
-      <Routes>
-        {/* Default route */}
-        <Route path="/" element={<Navigate to="/SW" replace />} />
-        <Route path="/SW" element={<LandingPage />} />
-        <Route path="/SW/" element={<LandingPage />} />
-
-        {/* List routes */}
-        <Route path="/SW/planets" element={<PlanetsPage planets={planets} onSearch={handlePlanetSearch} />} />
-        <Route path="/SW/films" element={<FilmsPage films={films} />} />
-        <Route path="/SW/residents" element={<ResidentsPage residents={residents} />} />
-
-        {/* Detail routes - same component, different URL structure */}
-        <Route path="/SW/planet/:itemName" element={<PlanetsPage planets={planets} onSearch={handlePlanetSearch} />} />
-        <Route path="/SW/film/:itemName" element={<FilmsPage films={films} />} />
-        <Route path="/SW/resident/:itemName" element={<ResidentsPage residents={residents} />} />
-      </Routes>
-    </Router>
+    <RouterComponent>
+      <AppRoutes
+        planets={planets}
+        films={films}
+        residents={residents}
+        onSearch={handlePlanetSearch}
+      />
+    </RouterComponent>
   );
 };
 

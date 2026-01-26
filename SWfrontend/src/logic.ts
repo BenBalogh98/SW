@@ -11,48 +11,6 @@ export default class Logic {
     private films: Film[] = [];
     private planets: Planet[] = [];
     private swapiRequests: SwapiRequests = new SwapiRequests();
-    private ID = Math.random().toString(36).substring(2, 11);
-    constructor() {
-        console.error("Logic instance created with ID:", this.ID);
-        (window as any).logic = this;
-        /*const originalPush = Array.prototype.push;
-        Array.prototype.push = function (...items: any[]) {
-            console.error("Pushing items:", this);
-            return originalPush.apply(this, items);
-        }*/
-    }
-
-    // // Getters
-    // public get people(): People[] {
-    //     return this._people;
-    // }
-
-    // public get films(): Film[] {
-    //     return this._films;
-    // }
-
-    // public get planets(): Planet[] {
-    //     return this._planets;
-    // }
-
-    // // Setters
-    // public set people(value: People[]) {
-    //     this._people = value;
-    //     console.error("set people called", this._people);
-    //     (window as any).people = this._people;
-    // }
-
-    // public set films(value: Film[]) {
-    //     this._films = value;
-    //     console.error("set films called", this._films);
-    //     (window as any).films = this._films;
-    // }
-
-    // public set planets(value: Planet[]) {
-    //     this._planets = value;
-    //     console.error("set planets called", this._planets);
-    //     (window as any).planets = this._planets;
-    // }
 
     public async loadAllData(): Promise<[IPeople[], IFilm[], IPlanet[]]> {
         const people = this.swapiRequests.getSWPeople();
