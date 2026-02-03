@@ -27,6 +27,7 @@ export default class Card extends React.Component<CardProps> {
     }
 
     private createDetailContent(): React.JSX.Element {
+        debugger;
         return <div key={this.props.title} className={"SWCard-details-container"}>
             {
                 this.props.content.map((detail) => {

@@ -11,7 +11,8 @@ export default class People implements Item {
     public eye_color: string;
     public birth_year: string;
     public gender: string;
-    public homeworld: string;
+    public homeworldURL: string;
+    public homeworld: Item | undefined = undefined;
     public filmsURLs: string[];
     public films: Item[] = [];
     public species: any[];
@@ -33,7 +34,7 @@ export default class People implements Item {
             eye_color: this.eye_color,
             birth_year: this.birth_year,
             gender: this.gender,
-            homeworld: this.homeworld,
+            homeworld: this.homeworldURL,
             films: this.filmsURLs,
             species: this.species,
             vehicles: this.vehicles,
@@ -55,7 +56,7 @@ export default class People implements Item {
             { displayName: "Eye color:", value: this.eye_color },
             { displayName: "Birth year:", value: this.birth_year },
             { displayName: "gender:", value: this.gender },
-            { displayName: "Homeworld:", value: this.homeworld },
+            { displayName: "Homeworld:", value: this.homeworld?.name || this.homeworldURL },
             { displayName: "Films:", value: this.filmNames },
             { displayName: "Species:", value: this.species },
             { displayName: "Vehicles:", value: this.vehicles },

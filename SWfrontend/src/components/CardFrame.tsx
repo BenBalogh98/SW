@@ -41,7 +41,7 @@ const CardFrameWrapper: React.FC<CardFrameProps> = (props) => {
             {props.items.map((item) => {
                 const isSelected = selectedCardName === item.name;
                 const isHidden = selectedCardName && selectedCardName !== item.name;
-
+                debugger;
                 return <Card
                     isSelected={isSelected}
                     isLeaveButtonVisible={isSelected}

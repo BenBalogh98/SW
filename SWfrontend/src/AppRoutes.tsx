@@ -9,7 +9,6 @@ import Film from './items/film.ts';
 import People from './items/resident.ts';
 
 export const AppRoutes: React.FC<{ planets: Planet[], films: Film[], residents: People[], onSearch: (searchTerm: string) => void }> = ({ planets, films, residents, onSearch }) => {
-    debugger;
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/SW" replace />} />

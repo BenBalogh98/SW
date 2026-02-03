@@ -33,33 +33,22 @@ export default class Logic {
         return { films: this.films, people: this.people, planets: this.planets }
     }
 
+    // Need to fix this. Or the render part.
     private matchItems(): void {
-        this.people.forEach((people) => {
-            const films = people.filmsURLs;
-            people.films = this.films.filter((film) => {
-                if (films.find((peopleFilm) => peopleFilm === film.url)) {
-                    return true;
-                }
-                return false;
-            });
+        this.people.forEach((person) => {
+            person.films = this.films.filter(film => person.filmsURLs.includes(film.url));
+            person.homeworld = this.planets.find(planet => planet.url === person.homeworldURL);
+        });
+
+        this.films.forEach((film) => {
+            film.planets = this.planets.filter(planet => film.planetURLs.includes(planet.url));
+
+            film.characters = this.people.filter(person => film.characterURLs.includes(person.url));
         });
 
         this.planets.forEach((planet) => {
-            const films = planet.filmsURLs;
-            planet.films = this.films.filter((film) => {
-                if (films.find((planetFilm) => planetFilm === film.url)) {
-                    return true;
-                }
-                return false;
-            });
-
-            const residents = planet.residentsURLs;
-            planet.resident = this.people.filter((people) => {
-                if (residents.find((planetResident) => planetResident === people.url)) {
-                    return true;
-                }
-                return false;
-            });
+            planet.resident = this.people.filter(person => planet.residentsURLs.includes(person.url));
+            planet.films = this.films.filter(film => planet.filmsURLs.includes(film.url));
         });
     }
 

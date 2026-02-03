@@ -14,7 +14,6 @@ const Navigation: React.FC<NavigationProps> = ({
     onSearch,
     searchPlaceholder = "Search..."
 }) => {
-    debugger;
     const location = useLocation();
     const [searchTerm, setSearchTerm] = useState('');
 

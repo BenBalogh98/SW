@@ -1,5 +1,7 @@
 import Item from "./item";
 import { IFilm } from "../interfaces/SWApiResponse";
+import Planet from "./planet";
+import People from "./resident";
 
 export default class Film implements Item {
     public name: string;
@@ -8,8 +10,10 @@ export default class Film implements Item {
     public director: string;
     public producer: string;
     public release_date: Date;
-    public characters: string[];
-    public planets: string[];
+    public characters: People[] | undefined = undefined;
+    public characterURLs: string[] = [];
+    public planets: Planet[] | undefined = undefined;
+    public planetURLs: string[] = [];
     public starships: string[];
     public vehicles: string[];
     public species: string[];
@@ -27,8 +31,8 @@ export default class Film implements Item {
             director: this.director,
             producer: this.producer,
             release_date: this.release_date,
-            characters: this.characters,
-            planets: this.planets,
+            characters: this.characterURLs,
+            planets: this.planetURLs,
             starships: this.starships,
             vehicles: this.vehicles,
             species: this.species,
@@ -45,8 +49,8 @@ export default class Film implements Item {
             { displayName: "Director:", value: this.director },
             { displayName: "Producer:", value: this.producer },
             { displayName: "Release Date:", value: this.release_date },
-            { displayName: "Characters:", value: this.characters },
-            { displayName: "Planets:", value: this.planets },
+            { displayName: "Characters:", value: this.characters?.map(character => character.name) || this.characterURLs },
+            { displayName: "Planets:", value: this.planets?.map(planet => planet.name) || this.planetURLs },
             { displayName: "Starships:", value: this.starships },
             { displayName: "Vehicles:", value: this.vehicles },
             { displayName: "Species:", value: this.species },
