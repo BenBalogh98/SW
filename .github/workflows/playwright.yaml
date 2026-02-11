@@ -36,21 +36,18 @@ jobs:
         path: pw/playwright-report/
         retention-days: 30
 
-    - name: Send mail
-      if: failure()
-      uses: dawidd6/action-send-mail@v2
+    - name: Send Email
+      uses: hilarion5/send-mail@v1
       with:
-        # mail server settings
-        server_address: smtp.gmail.com
-        server_port: 465
-        # user credentials
+        smtp-server: smtp.gmail.com
+        smtp-port: 465
+        smtp-secure: true
+        from-email: ${{ secrets.GMNM }}
+        to-email: ben.balogh98@gmail.com
         username: ${{ secrets.GMNM }}
         password: ${{ secrets.GMPW }}
-        # email subject
-        subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-        # email body as text
-        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-        # comma-separated string, send email to
-        to: ben.balogh98@gmail.com
-        # from email name
-        from: BB
+        subject: Test Email
+        body: This is a test email sent from GitHub Actions.
+        html: |
+          <h1>This is a test email</h1>
+          <p>Test Paragraph</p>
