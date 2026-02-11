@@ -63,6 +63,23 @@ export default class Planet extends Item {
         ]
     }
 
+    public getDetailsContent2(): DetailsContent[] {
+        return [
+            { displayName: "Rotation Period:", value: this.rotation_period },
+            { displayName: "Orbital Period:", value: this.orbital_period },
+            { displayName: "Diameter:", value: this.diameter },
+            { displayName: "Climate:", value: this.climate },
+            { displayName: "Gravity:", value: this.gravity },
+            { displayName: "Terrain:", value: this.terrain },
+            { displayName: "Surface water:", value: this.surface_water },
+            { displayName: "Population:", value: this.population },
+            { displayName: "Residents:", value: this.resident || this.residentsURLs },
+            { displayName: "Films:", value: this.films || this.filmsURLs },
+            { displayName: "Created:", value: new Date(this.created) },
+            { displayName: "Edited:", value: new Date(this.edited) }
+        ]
+    }
+
     private get residentNames(): string[] {
         if (!this.resident.length) {
             return this.residentsURLs;

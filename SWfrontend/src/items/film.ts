@@ -1,4 +1,4 @@
-import Item from "./item";
+import Item, { DetailsContent } from "./item";
 import { IFilm } from "../interfaces/SWApiResponse";
 import Planet from "./planet";
 import People from "./resident";
@@ -42,7 +42,7 @@ export default class Film implements Item {
         } = filmProperties);
     }
 
-    public getDetailsContent(): any[] {
+    public getDetailsContent(): DetailsContent[] {
         return [
             { displayName: "Episode ID:", value: this.episode_id },
             { displayName: "Opening Crawl:", value: this.opening_crawl },
@@ -58,5 +58,20 @@ export default class Film implements Item {
             { displayName: "Edited:", value: new Date(this.edited) }
         ]
     }
-
+    public getDetailsContent2(): DetailsContent[] {
+        return [
+            { displayName: "Episode ID:", value: this.episode_id },
+            { displayName: "Opening Crawl:", value: this.opening_crawl },
+            { displayName: "Director:", value: this.director },
+            { displayName: "Producer:", value: this.producer },
+            { displayName: "Release Date:", value: this.release_date },
+            { displayName: "Characters:", value: this.characters || this.characterURLs },
+            { displayName: "Planets:", value: this.planets || this.planetURLs },
+            { displayName: "Starships:", value: this.starships },
+            { displayName: "Vehicles:", value: this.vehicles },
+            { displayName: "Species:", value: this.species },
+            { displayName: "Created:", value: new Date(this.created) },
+            { displayName: "Edited:", value: new Date(this.edited) }
+        ]
+    }
 }

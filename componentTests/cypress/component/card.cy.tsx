@@ -9,9 +9,6 @@ describe("<card /> component", () => {
         { displayName: "Property 1", value: "Value 1" },
         { displayName: "Property 2", value: "Value 2" }
     ];
-    beforeEach(() => {
-
-    })
 
     const onClickFunction = () => { };
 

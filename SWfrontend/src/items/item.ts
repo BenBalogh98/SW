@@ -26,9 +26,13 @@ export default class Item {
             { displayName: "URL", value: this.url }
         ];
     }
+
+    public getDetailsContent2(): DetailsContent[] {
+        return [];
+    }
 }
 
 export interface DetailsContent {
     displayName: string;
-    value: string | string[] | Date;
+    value: string | string[] | Date | number | Item[] | Item | undefined;
 }
