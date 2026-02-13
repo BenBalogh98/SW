@@ -3,7 +3,7 @@ import { IFilm } from "../interfaces/SWApiResponse";
 import Planet from "./planet";
 import People from "./resident";
 
-export default class Film implements Item {
+export default class Film extends Item {
     public name: string;
     public episode_id: number;
     public opening_crawl: string;
@@ -24,6 +24,7 @@ export default class Film implements Item {
     public backgroundImage: string = "";
 
     constructor(filmProperties: IFilm) {
+        super({ ...filmProperties, name: filmProperties.title, url: filmProperties.url });
         ({
             title: this.name,
             episode_id: this.episode_id,
