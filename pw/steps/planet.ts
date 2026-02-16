@@ -3,7 +3,7 @@ import { test, expect } from '../fixtures/fixtures';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('I am on the planet card page', async ({ page, planetPage, SW }) => {
+Given('I am on the planet card page', async ({ page, planetPage, SWPage }) => {
     await page.goto(process.env.baseURL || "http://localhost:5173/SW");
     await page.click('text=Planets');
 });

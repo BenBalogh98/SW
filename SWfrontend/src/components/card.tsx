@@ -23,16 +23,16 @@ export default function Card(props: CardProps): React.JSX.Element {
 
     const renderValue = (displayName: string, value: unknown): React.JSX.Element => {
         const displayNameElement = <div>{displayName}</div>;
-
+        const detailRowClassName = "SWCard-display-row " + displayName.replace(/\s/g, "-").toLowerCase();
         if (value instanceof Date) {
-            return <div key={displayName} className={"SWCard-detail-row"}>
+            return <div key={displayName} className={detailRowClassName}>
                 {displayNameElement}
                 <div className="SWCard-value-container">{value.toUTCString()}</div>
             </div>;
         }
 
         if (value instanceof Item) {
-            return <div key={displayName} className={"SWCard-detail-row"}>
+            return <div key={displayName} className={detailRowClassName}>
                 {displayNameElement}
                 <div onClick={(e) => { itemClick(e, value); }} className="SWCard-value-container">{value.name}</div>
             </div>;
@@ -44,19 +44,19 @@ export default function Card(props: CardProps): React.JSX.Element {
                     return <div key={item.name} onClick={(e) => { itemClick(e, item); }} className="SWCard-value-container item-link">{item.name}</div>
                 });
 
-                return <div key={displayName} className={"SWCard-detail-row"}>
+                return <div key={displayName} className={detailRowClassName}>
                     {displayNameElement}
                     {itemMap}
                 </div>;
             }
 
-            return <div key={displayName} className={"SWCard-detail-row"}>
+            return <div key={displayName} className={detailRowClassName}>
                 {displayNameElement}
                 <div className="SWCard-value-container">{value.join(", ")}</div>
             </div>;
         }
 
-        return <div key={displayName} className={"SWCard-detail-row"}>
+        return <div key={displayName} className={detailRowClassName}>
             {displayNameElement}
             <div className="SWCard-value-container">{String(value ?? "")}</div>
         </div>;
