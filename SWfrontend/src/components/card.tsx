@@ -24,6 +24,7 @@ export default function Card(props: CardProps): React.JSX.Element {
     const renderValue = (displayName: string, value: unknown): React.JSX.Element => {
         const displayNameElement = <div>{displayName}</div>;
         const detailRowClassName = "SWCard-display-row " + displayName.replace(/\s/g, "-").toLowerCase();
+
         if (value instanceof Date) {
             return <div key={displayName} className={detailRowClassName}>
                 {displayNameElement}

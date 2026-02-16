@@ -45,34 +45,18 @@ export default class Film extends Item {
 
     public getDetailsContent(): DetailsContent[] {
         return [
-            { displayName: "Episode ID:", value: this.episode_id },
-            { displayName: "Opening Crawl:", value: this.opening_crawl },
-            { displayName: "Director:", value: this.director },
-            { displayName: "Producer:", value: this.producer },
-            { displayName: "Release Date:", value: this.release_date },
-            { displayName: "Characters:", value: this.characters?.map(character => character.name) || this.characterURLs },
-            { displayName: "Planets:", value: this.planets?.map(planet => planet.name) || this.planetURLs },
-            { displayName: "Starships:", value: this.starships },
-            { displayName: "Vehicles:", value: this.vehicles },
-            { displayName: "Species:", value: this.species },
-            { displayName: "Created:", value: new Date(this.created) },
-            { displayName: "Edited:", value: new Date(this.edited) }
-        ]
-    }
-    public getDetailsContent2(): DetailsContent[] {
-        return [
-            { displayName: "Episode ID:", value: this.episode_id },
-            { displayName: "Opening Crawl:", value: this.opening_crawl },
-            { displayName: "Director:", value: this.director },
-            { displayName: "Producer:", value: this.producer },
-            { displayName: "Release Date:", value: this.release_date },
-            { displayName: "Characters:", value: this.characters || this.characterURLs },
-            { displayName: "Planets:", value: this.planets || this.planetURLs },
-            { displayName: "Starships:", value: this.starships },
-            { displayName: "Vehicles:", value: this.vehicles },
-            { displayName: "Species:", value: this.species },
-            { displayName: "Created:", value: new Date(this.created) },
-            { displayName: "Edited:", value: new Date(this.edited) }
+            { displayName: "Episode ID", value: this.episode_id },
+            { displayName: "Opening Crawl", value: this.opening_crawl },
+            { displayName: "Director", value: this.director },
+            { displayName: "Producer", value: this.producer },
+            { displayName: "Release Date", value: this.release_date },
+            { displayName: "Characters", value: this.characters || this.characterURLs },
+            { displayName: "Planets", value: this.planets || this.planetURLs },
+            { displayName: "Starships", value: this.starships },
+            { displayName: "Vehicles", value: this.vehicles },
+            { displayName: "Species", value: this.species },
+            { displayName: "Created", value: new Date(this.created) },
+            { displayName: "Edited", value: new Date(this.edited) }
         ]
     }
 }

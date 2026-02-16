@@ -51,39 +51,20 @@ export default class People extends Item {
 
     public getDetailsContent(): DetailsContent[] {
         return [
-            { displayName: "Height:", value: this.height },
-            { displayName: "Mass:", value: this.mass },
-            { displayName: "Hair color:", value: this.hair_color },
-            { displayName: "Skin color:", value: this.skin_color },
-            { displayName: "Eye color:", value: this.eye_color },
-            { displayName: "Birth year:", value: this.birth_year },
-            { displayName: "gender:", value: this.gender },
-            { displayName: "Homeworld:", value: this.homeworld || this.homeworldURL },
-            { displayName: "Films:", value: this.films || this.filmNames },
-            { displayName: "Species:", value: this.species },
-            { displayName: "Vehicles:", value: this.vehicles },
-            { displayName: "Starships:", value: this.starships },
-            { displayName: "Created:", value: this.created },
-            { displayName: "Edited:", value: this.edited }
-        ]
-    }
-
-    public getDetailsContent2(): DetailsContent[] {
-        return [
-            { displayName: "Height:", value: this.height },
-            { displayName: "Mass:", value: this.mass },
-            { displayName: "Hair color:", value: this.hair_color },
-            { displayName: "Skin color:", value: this.skin_color },
-            { displayName: "Eye color:", value: this.eye_color },
-            { displayName: "Birth year:", value: this.birth_year },
-            { displayName: "gender:", value: this.gender },
-            { displayName: "Homeworld:", value: this.homeworld || this.homeworldURL },
-            { displayName: "Films:", value: this.films || this.filmNames },
-            { displayName: "Species:", value: this.species },
-            { displayName: "Vehicles:", value: this.vehicles },
-            { displayName: "Starships:", value: this.starships },
-            { displayName: "Created:", value: this.created },
-            { displayName: "Edited:", value: this.edited }
+            { displayName: "Height", value: this.height },
+            { displayName: "Mass", value: this.mass },
+            { displayName: "Hair color", value: this.hair_color },
+            { displayName: "Skin color", value: this.skin_color },
+            { displayName: "Eye color", value: this.eye_color },
+            { displayName: "Birth year", value: this.birth_year },
+            { displayName: "gender", value: this.gender },
+            { displayName: "Homeworld", value: this.homeworld || this.homeworldURL },
+            { displayName: "Films", value: this.films || this.filmNames },
+            { displayName: "Species", value: this.species },
+            { displayName: "Vehicles", value: this.vehicles },
+            { displayName: "Starships", value: this.starships },
+            { displayName: "Created", value: this.created },
+            { displayName: "Edited", value: this.edited }
         ]
     }
 

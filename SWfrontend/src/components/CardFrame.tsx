@@ -47,7 +47,7 @@ const CardFrameWrapper: React.FC<CardFrameProps> = (props) => {
                     isLeaveButtonVisible={isSelected}
                     key={item.name}
                     className={`${item.name} ${isHidden ? 'hidden' : ''}`}
-                    content={item.getDetailsContent2()}
+                    content={item.getDetailsContent()}
                     title={item.name}
                     hasLeaveButton={true}
                     leaveButtonIMGContent={item.exitButtonIMG}
