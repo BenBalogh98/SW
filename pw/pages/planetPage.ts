@@ -4,8 +4,6 @@ export default class PlanetPage {
     private page: BasePage;
     private dDetailsContainer: string = ".SWCard-details-container";
 
-
-
     constructor(page: BasePage) {
         this.page = page;
     }
@@ -14,6 +12,4 @@ export default class PlanetPage {
         const detailsLocator = this.page.locator(this.dDetailsContainer);
         return detailsLocator.textContent();
     }
-
-
 }

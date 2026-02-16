@@ -3,7 +3,7 @@ import { test, expect } from '../fixtures/fixtures';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('I am on the planet card page', async ({ page }) => {
+Given('I am on the planet card page', async ({ page, planetPage, SW }) => {
     await page.goto(process.env.baseURL || "http://localhost:5173/SW");
     await page.click('text=Planets');
 });
@@ -24,4 +24,11 @@ When('I navigate back using the leave button', async ({ page, planetPage }) => {
 Then('I should be back on the planets list page', async ({ page, planetPage }) => {
     const url = page.url();
     expect(url).toContain('/SW/planets');
+});
+
+Then('I should see a list of films related to the planet', async ({ page, planetPage }) => {
+    const filmsLocator = page.locator('.SWCard-details-container >> text=Films:');
+    const filmsText = await filmsLocator.textContent();
+    expect(filmsText).toBeTruthy();
+    // Further assertions can be made here to check the actual film names
 });

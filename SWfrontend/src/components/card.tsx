@@ -22,41 +22,42 @@ export default function Card(props: CardProps): React.JSX.Element {
     };
 
     const renderValue = (displayName: string, value: unknown): React.JSX.Element => {
+        const displayNameElement = <div>{displayName}</div>;
+
         if (value instanceof Date) {
             return <div key={displayName} className={"SWCard-detail-row"}>
-                <div>{displayName}</div>
+                {displayNameElement}
                 <div className="SWCard-value-container">{value.toUTCString()}</div>
             </div>;
         }
 
         if (value instanceof Item) {
-            return <div onClick={(e) => { itemClick(e, value); }} key={displayName} className={"SWCard-detail-row item-link"}>
-                <div>{displayName}</div>
-                <div className="SWCard-value-container">{value.name}</div>
+            return <div key={displayName} className={"SWCard-detail-row"}>
+                {displayNameElement}
+                <div onClick={(e) => { itemClick(e, value); }} className="SWCard-value-container">{value.name}</div>
             </div>;
         }
 
         if (Array.isArray(value)) {
             if (value.length > 0 && value[0] instanceof Item) {
-                debugger;
                 const itemMap = (value as Item[]).map((item) => {
-                    return <div key={item.name} onClick={(e) => { itemClick(e, item); }} className="SWCard-value-container">{item.name}</div>
+                    return <div key={item.name} onClick={(e) => { itemClick(e, item); }} className="SWCard-value-container item-link">{item.name}</div>
                 });
 
-                return <div key={displayName} className={"SWCard-detail-row item-link"}>
-                    <div>{displayName}</div>
+                return <div key={displayName} className={"SWCard-detail-row"}>
+                    {displayNameElement}
                     {itemMap}
                 </div>;
             }
 
             return <div key={displayName} className={"SWCard-detail-row"}>
-                <div>{displayName}</div>
+                {displayNameElement}
                 <div className="SWCard-value-container">{value.join(", ")}</div>
             </div>;
         }
 
         return <div key={displayName} className={"SWCard-detail-row"}>
-            <div>{displayName}</div>
+            {displayNameElement}
             <div className="SWCard-value-container">{String(value ?? "")}</div>
         </div>;
     };
