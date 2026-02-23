@@ -1,11 +1,14 @@
+import { Locator, Page } from "@playwright/test";
 import DetailsContent from "./detailsContent";
 
 export default class CardComponent {
-    title: string = ".SWCard .title";
-    leaveButton: string = ".SWCard .SWCard-leaveButton";
-    details: DetailsContent = new DetailsContent();
+    title: Locator;
+    leaveButton: Locator;
+    details: DetailsContent;
 
-    constructor() {
-
+    constructor(page: Page) {
+        this.title = page.locator(".SWCard .title");
+        this.leaveButton = page.locator(".SWCard .SWCard-leaveButton");
+        this.details = new DetailsContent(page);
     }
 }

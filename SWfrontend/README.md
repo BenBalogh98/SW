@@ -5,7 +5,6 @@
 3. Change directory to SWFrontend and run `npx vite dev --mode locale`
 4. You can load the project by navigating to `http://127.0.0.1:5173/SW/`
 5. Cypress headless component test start: `npx cypress run --component`
+6. PW test running: `npm run test` or `$env:ENV="pipe"; npm run test`
 
-current plan: move backend to TS, reorganize things to folders/files, use dotenv, than work on starting the pipeline that produces a container at the end.
-
-finish some basic cucumber tests in ./pw and fix the pipeline.
+finish cucumber tests in ./pw and fix the pipeline.

@@ -1,34 +1,41 @@
 import { createBdd } from 'playwright-bdd';
+import { DataTable } from '@cucumber/cucumber';
 import { test, expect } from '../fixtures/fixtures';
+import CardPage from '../pages/cardPage';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('I am on the planet card page', async ({ page, planetPage, SWPage }) => {
+Given('I am on the planet card page', async ({ page, swPage }) => {
     await page.goto(process.env.baseURL || "http://localhost:5173/SW");
-    await page.click('text=Planets');
+    await (await swPage.navigator.getLinkByName("Planets")).click();
 });
 
-When('I click on the {string} planet card', async ({ page, planetPage }, planetName: string) => {
-    await page.locator(`div.${planetName}`).click();
+When('I click on the {string} planet card', async ({ planetPage }, planetName: string) => {
+    await (await planetPage.getPlanetCardByName(planetName)).click();
 });
 
-Then('I should see detailed information about {string}', async ({ planetPage }, planetName: string) => {
-    const details = await planetPage.getPlanetDetails(planetName);
-    expect(details).toBeTruthy();
+Then('I should see detailed information of {string}', async ({ cardPage }, entityType: string, table: DataTable) => {
+    const expectedDisplayNames = table.raw().map(([displayName]) => displayName).filter(Boolean);
+    await cardPage.verifyDetailsContent(expectedDisplayNames);
 });
 
-When('I navigate back using the leave button', async ({ page, planetPage }) => {
-    await page.click('.SWCard-leave-button');
+When('I navigate back using the leave button', async ({ cardPage }) => {
+    await cardPage.card.leaveButton.click();
 });
 
-Then('I should be back on the planets list page', async ({ page, planetPage }) => {
-    const url = page.url();
+Then('I should be back on the planets list page', async ({ planetPage }) => {
+    const url = planetPage.page.url();
     expect(url).toContain('/SW/planets');
 });
 
-Then('I should see a list of films related to the planet', async ({ page, planetPage }) => {
-    const filmsLocator = page.locator('.SWCard-details-container >> text=Films:');
-    const filmsText = await filmsLocator.textContent();
-    expect(filmsText).toBeTruthy();
-    // Further assertions can be made here to check the actual film names
+// Not yet done, need to finish
+Then('I should see a list of films related to {string}', async ({ page, planetPage, cardPage }, planetName: string) => {
+    const filmLinks = await cardPage.card.details.getLinksByProperty("Films");
+    const linkCount = await filmLinks.count();
+    expect(linkCount).toBeGreaterThan(0);
+});
+
+When('I click on the {string} film link in the details', async ({ cardPage }, filmName: string) => {
+    const filmLinks = await cardPage.card.details.getLinksByProperty("Films");
+    filmLinks.filter({ hasText: filmName }).first().click();
 });
