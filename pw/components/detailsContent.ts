@@ -14,6 +14,7 @@ export default class DetailsContent {
     }
 
     public async getLinksByProperty(displayName: string): Promise<Locator> {
+        await expect(this.detailsRow.filter({ hasText: displayName })).toBeVisible();
         return this.base.locator(`.SWCard-display-row.${displayName.replace(/\s/g, "-").toLowerCase()} .SWCard-value-container.item-link`);
     }
 }
