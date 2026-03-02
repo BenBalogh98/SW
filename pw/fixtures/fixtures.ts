@@ -1,12 +1,12 @@
 import { test as base } from 'playwright-bdd';
 import { expect } from '@playwright/test';
 import PlanetPage from '../pages/planetPage';
-import SWPage from '../pages/SWPage';
+import HomePage from '../pages/homePage';
 import CardPage from '../pages/cardPage';
 
 type StarWarsFixture = {
     planetPage: PlanetPage;
-    swPage: SWPage;
+    homePage: HomePage;
     cardPage: CardPage;
 };
 
@@ -15,9 +15,9 @@ export const test = base.extend<StarWarsFixture>({
         const planetPage = new PlanetPage(page);
         await use(planetPage);
     },
-    swPage: async ({ page }, use) => {
-        const SW = new SWPage(page);
-        await use(SW);
+    homePage: async ({ page }, use) => {
+        const homePage = new HomePage(page);
+        await use(homePage);
     },
     cardPage: async ({ page }, use) => {
         const cardPage = new CardPage(page);

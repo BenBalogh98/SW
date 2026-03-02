@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { CardType } from "../interfaces/cardInterfaces";
 
 export default class NavigatorComponent {
     protected page: Page;
@@ -14,7 +15,7 @@ export default class NavigatorComponent {
 
     }
 
-    public async getLinkByName(linkName: "Planets" | "Films" | "Residents"): Promise<Locator> {
+    public async getLinkByName(linkName: CardType): Promise<Locator> {
         return this.links.filter({ hasText: linkName });
     }
 }

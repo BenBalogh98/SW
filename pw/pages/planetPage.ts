@@ -1,4 +1,4 @@
-import { Page as BasePage } from '@playwright/test';
+import { Page as BasePage, expect } from '@playwright/test';
 import NavigationComponent from '../components/navigationComponent';
 import CardPage from './cardPage';
 import SearchBarComponent from '../components/searchBarComponent';
@@ -19,5 +19,10 @@ export default class PlanetPage {
 
     public async getPlanetCardByName(planetName: string) {
         return this.page.locator(`.SWCard .title`).filter({ hasText: planetName });
+    }
+
+    public async verifyPlanetListPage() {
+        const url = this.page.url();
+        expect(url).toContain('/SW/planets');
     }
 }
