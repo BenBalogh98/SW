@@ -7,6 +7,7 @@ import Planet from './items/planet.ts';
 import Film from './items/film.ts';
 import People from './items/resident.ts';
 import { AppRoutes } from './AppRoutes.tsx';
+import BasicBreadcrumbs from './components/Breadcrumbs.tsx';
 
 interface AppProps {
   Router?: React.ComponentType<{ children: React.ReactNode }>;
@@ -40,6 +41,7 @@ const App: React.FC<AppProps> = ({ Router: RouterComponent = Router }) => {
 
   return (
     <RouterComponent>
+      <BasicBreadcrumbs />
       <AppRoutes
         planets={planets}
         films={films}
