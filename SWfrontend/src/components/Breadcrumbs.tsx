@@ -73,7 +73,7 @@ export default function BasicBreadcrumbs() {
         <Breadcrumbs style={{ color: 'white' }} separator={<NavigateNext />} aria-label="breadcrumb">
             {crumbs.map((crumb, index) =>
                 index === crumbs.length - 1 ? (
-                    <Typography color="white" key={crumb.to}>
+                    <Typography className='active' color="white" key={crumb.to}>
                         {crumb.label}
                     </Typography>
                 ) : (

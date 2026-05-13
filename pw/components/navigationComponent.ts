@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { CardType } from "../interfaces/cardInterfaces";
+import { CardType } from "../interfaces/";
 
 export default class NavigatorComponent {
     protected page: Page;

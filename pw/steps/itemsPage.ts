@@ -2,7 +2,7 @@ import { createBdd } from 'playwright-bdd';
 import { DataTable } from '@cucumber/cucumber';
 import { test, expect } from '../fixtures/fixtures';
 import CardPage from '../pages/cardPage';
-import { CardType } from '../interfaces/cardInterfaces';
+import { CardType } from '../interfaces/types';
 
 const { Given, When, Then } = createBdd(test);
 

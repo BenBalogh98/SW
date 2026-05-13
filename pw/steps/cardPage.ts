@@ -2,12 +2,12 @@ import { createBdd } from 'playwright-bdd';
 import { DataTable } from '@cucumber/cucumber';
 import { test, expect } from '../fixtures/fixtures';
 import CardPage from '../pages/cardPage';
-import { CardType } from '../interfaces/cardInterfaces';
+import { CardType } from '../interfaces/types';
 
 const { Given, When, Then } = createBdd(test);
 
 Then('I should see detailed information of {string}', async ({ cardPage }, entityType: CardType, table: DataTable) => {
-    const expectedDisplayNames = table.raw().map(([displayName]) => displayName).filter(Boolean);
+    const expectedDisplayNames = table.raw().map(([displayName]) => displayName);
     await cardPage.verifyDetailsContent(expectedDisplayNames);
 });
 

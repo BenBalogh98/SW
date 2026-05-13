@@ -9,7 +9,7 @@ Then I should see detailed information of "Planets"
 	| Diameter        |
 	| Climate         |
 	| Gravity         |
-	| Terrain      	   |
+	| Terrain      	  |
 	| Surface Water   |
 	| Population      |
 	| Residents       |
@@ -37,7 +37,23 @@ Then I should see detailed information of "Films"
 	| Species         |
 	| Created         |
 	| Edited          |
-# This should be done with breadcrumbs actually.
-# No such feature and no plan for this right now
-#When I navigate back using the leave button
-#Then I should be back on the "Tatooine" planet details page
+
+Scenario: Navigate to Planets page from planet details through the breadcrumb
+Given I am on the "Planets" card page
+When I click on the "Tatooine" planet card
+Then I should see detailed information of "Planets"
+	| Population      |
+	| Residents       |
+	| Films           |
+When I click on the "Planets" link in the breadcrumb
+Then I should be back on the "Planets" page
+
+Scenario: Navigate to Home page from planet details through the breadcrumb
+Given I am on the "Planets" card page
+When I click on the "Tatooine" planet card
+Then I should see detailed information of "Planets"
+	| Population      |
+	| Residents       |
+	| Films           |
+When I click on the "Home" link in the breadcrumb
+Then I should be back on the "Home" page
